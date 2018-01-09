@@ -1,0 +1,110 @@
+/*signup page stuff*/
+#sign-up-container{
+	top: 0;
+	left: 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color:#807b7b6e;
+	/*background-image: url("http://static1.squarespace.com/static/593bf1a917bffc1f7c5c8c79/59813cd2bf629ae5999399e3/5a1ecd17c83025aa86077640/1513186706972/Satoshi-Bitcoin-Crypto-Currency-Btc-Cryptocurrency-1923207.png?format=1000w");*/
+}
+#sign-up-img{
+	width: 52vw;
+	position: relative;
+	top: 14vw;
+	left: 5vw;
+}
+.sign-up-nav-wrapper{
+	position: absolute;
+	left: 64.25vw;
+	top: 7.5vw;
+}
+.sign-up-authnav,.login-authnav{
+	font-size: 2em;
+	text-decoration: none;
+	font-family: 'Comfortaa', cursive;
+	color: snow;
+}
+.sign-up-authnav:hover,.login-authnav:hover{
+	text-decoration: none;
+	color:black;
+}
+.login-authnav{
+	margin-left: 5vw;
+}
+.sign-up-wrapper{
+	width: 35vw;
+	height: 36vw;
+	position: absolute;
+	left: 58vw;
+	top: 12vw;
+}
+#auth-sign-up-btn{
+	position: absolute;
+	width: 14vw;
+	left: 1vw;
+	margin-top: 1em;
+}
+.sign-up-form{
+	margin-top:2em;
+}
+.sign-up-form input{
+	height: 3.5em;
+}
+.authnav-active{
+	text-decoration: underline!important;
+}
+#auth-has-act{
+	position: absolute;
+	margin-top: 1.5em;
+	right: 2vw;
+	color: snow;
+}
+#auth-has-act a{
+	color:snow;
+}
+/*login page stuff*/
+#login-container{
+	width:100%;
+	height: 100%;
+	position: absolute;
+	background-color:#807b7b6e;
+	top: 0;
+	left: 0;
+}
+.login-nav-wrapper{
+	position: absolute;
+	left: 40.2vw;
+	top: 12vw;
+}
+.login-wrapper{
+	width: 35vw;
+	height: 36vw;
+	position: absolute;
+	top: 18vw;
+	left: 33.5vw;
+}
+.login-form{
+	margin-top: 2em
+}
+.login-form input{
+	height:3.5em;
+}
+#auth-login-btn{
+	width: 13em;
+	margin-left: 1em;
+}
+#auth-forgot-pass{
+	display: inline-block;
+	margin-left: 4em;
+	font-size: 1.2em;
+	color: snow;
+}
+#login-page-img{
+	position: absolute;
+	top:0;
+	left:0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+}

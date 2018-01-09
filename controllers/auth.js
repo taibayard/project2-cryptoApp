@@ -14,12 +14,12 @@ router.get("/recovery",function(req,res){
 })
 router.post('/login', function(req,res){
   // res.send("post login route reached");
-	res.redirect("/profile/home")
+	res.redirect("/profile/dash")
 });
 
 router.post('/signup', function(req,res){
   // res.send("post signup route reached");
-  res.redirect("/profile/home")
+  res.redirect("/profile/dash")
 });
 
 router.get('/logout', function(req, res){

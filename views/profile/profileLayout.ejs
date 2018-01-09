@@ -5,18 +5,29 @@
 	<title>Crypto App</title>
 	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	  <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-	  <link rel="stylesheet" type="text/css" href="/css/auth.css">
+	  <link rel="stylesheet" type="text/css" href="/css/profile.css">
 	  <link rel="stylesheet" type="text/css" href="/css/footer.css">
 </head>
 <body>
-	<%-body%>
-	<script src="//code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <footer>
+	<!--nav for logged in users -->
+	<nav>
+		<ul>
+			<li id = "tools-btn" class="hamburger-icon"></li>
+		</ul>
+	</nav>
+    <!--DO NOT INSERT HTML AFTER HERE-->
+	<div id="rendered-view">
+		<%-body%>
+	</div>
+	<footer>
 		<a class = "privacy-link" href="/privacy">Privacy</a>
 	</footer>
 	<div class="preload">
 	   <img src="/img/seattle_preview.jpg" width="1" height="1" >
 	</div>
+	<!-- Scripts -->
+	<script src="//code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/navbar.js"></script>
 </body>
 </html>

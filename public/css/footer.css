@@ -1,0 +1,16 @@
+/*footer*/
+footer{
+	background-color: #949494d4;
+	overflow:auto;
+	position: absolute;
+	bottom:0;
+	width:100%;
+}
+.privacy-link{
+	font-family: 'Comfortaa', cursive;
+	color: snow;
+	float:right;
+	margin-right: 8em;
+}
+
+
