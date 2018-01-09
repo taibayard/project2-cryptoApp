@@ -11,22 +11,25 @@ module.exports = {
       username: {
         type: Sequelize.TEXT
       },
+      password: {
+        type: Sequelize.TEXT
+      },
+      email: {
+        type: Sequelize.TEXT
+      },
+      phone: {
+        type: Sequelize.TEXT
+      },
       firstname: {
         type: Sequelize.TEXT
       },
       lastname: {
         type: Sequelize.TEXT
       },
-      email: {
-        type: Sequelize.TEXT
-      },
       dob: {
         type: Sequelize.DATE
       },
       bio: {
-        type: Sequelize.TEXT
-      },
-      phone: {
         type: Sequelize.TEXT
       },
       following: {

@@ -4,6 +4,7 @@ var express = require('express');
 var ejsLayouts = require('express-ejs-layouts');
 var flash = require('connect-flash');
 var passport = require('./config/passportConfig');
+var isLoggedIn = require('./middleware/isLoggedIn');
 var session = require('express-session');
 var app = express();
 
@@ -26,16 +27,16 @@ app.use(function(req, res, next){
   next();
 });
 
-
-app.get('/', function(req, res){
-  res.render('home');
+app.get('/', isLoggedIn, function(req, res){
+	res.render("index");
 });
 
-app.get('/profile', isLoggedIn, function(req, res){
-  res.render('profile');
-});
+// app.get('/profile', isLoggedIn, function(req, res){
+//   res.render('profile');
+// });
 
 app.use('/auth', require('./controllers/auth'));
+app.use('/profile', require('./controllers/profile'));
 
 var server = app.listen(process.env.PORT || 3000);
 
