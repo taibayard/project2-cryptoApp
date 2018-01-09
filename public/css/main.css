@@ -1,0 +1,98 @@
+html,body{
+	margin:0;
+	width:100%;
+	height:100%;
+}
+/*signup page stuff*/
+#sign-up-container{
+	width:100%;
+	height: 100%;
+	background-color:#807b7b6e;
+	/*background-image: url("http://static1.squarespace.com/static/593bf1a917bffc1f7c5c8c79/59813cd2bf629ae5999399e3/5a1ecd17c83025aa86077640/1513186706972/Satoshi-Bitcoin-Crypto-Currency-Btc-Cryptocurrency-1923207.png?format=1000w");*/
+}
+#sign-up-img{
+	width: 52vw;
+	position: relative;
+	top: 14vw;
+	left: 5vw;
+}
+.auth-nav-wrapper{
+	position: absolute;
+	left: 65vw;
+	top: 5vw;
+}
+.sign-up-authnav,.login-authnav{
+	font-size: 2em;
+	text-decoration: none;
+	font-family: 'Comfortaa', cursive;
+	color: snow;
+}
+.sign-up-authnav:hover,.login-authnav:hover{
+	text-decoration: none;
+	color:black;
+}
+.login-authnav{
+	margin-left: 5vw;
+}
+.sign-up-wrapper{
+	width: 35vw;
+	height: 36vw;
+	position: absolute;
+	left: 58vw;
+	top: 12vw;
+}
+#auth-sign-up-btn{
+	position: absolute;
+	width: 14vw;
+	left: 1vw;
+	margin-top: 2em;
+}
+#auth-has-act{
+	position: absolute;
+	right: 2vw;
+	margin-top: 2.5em;
+}
+.sign-up-form{
+	margin-top:2em;
+}
+.sign-up-form input{
+	height: 3.5em;
+}
+.authnav-active{
+	text-decoration: underline!important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*footer*/
+footer{
+	background-color:#949494;
+	overflow:auto;
+	position: absolute;
+	bottom:0;
+	width:100%;
+}
+.privacy-link{
+	font-family: 'Comfortaa', cursive;
+	color: snow;
+	float:right;
+	margin-right: 8em;
+}
+
+
+
+
+
+
+

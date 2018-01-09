@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+	<main id = "sign-up-container">
+		<img id="sign-up-img" src="https://assets.coinjar.com/images/illustrations/illu__trading-suitcase-f195dc25.png">
+		<div class="auth-nav-wrapper">
+			<a class="sign-up-authnav authnav-active" href="/">Sign Up</a>
+			<a class="login-authnav" href="/">Login</a>
+		</div>	
+		<div class="sign-up-wrapper">
+			<form method="POST" action="auth/signup">
+				<div class="sign-up-form form-group">
+					<input type="text" name="username" placeholder="Username" class="form-control">
+				</div>
+				<div class="sign-up-form form-group">
+					<input type="text" name="email" placeholder="Email" class="form-control">
+				</div>
+				<div class="sign-up-form form-group">
+					<input type="text" name="phone" placeholder="Phone" class="form-control">
+				</div>
+				<div class="sign-up-form form-group">
+					<input type="password" name="password" placeholder="Password" class="form-control">
+				</div>
+				<div class="sign-up-form form-group">
+					<input type="password" name="passwordVerf" placeholder="Reenter Password" class="form-control">
+				</div>
+				<input type="submit" name="submit-btn" class="btn btn-success" id="auth-sign-up-btn">
+				<p id="auth-has-act">Already have an account ?  <a href="/">Login</a></p>
+			</form>
+		</div>
+	</main>
+</body>
+</html>

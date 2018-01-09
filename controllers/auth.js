@@ -3,8 +3,8 @@ var passport = require('../config/passportConfig');
 var db = require('../models');
 var router = express.Router();
 
-router.get('/landing', function(req, res){
-  res.render('auth/landing');
+router.get('/signup', function(req, res){
+  res.render('auth/signup');
 });
 
 router.post('/login', function(req,res){
