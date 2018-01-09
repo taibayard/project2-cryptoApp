@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
 </head>
 <body>
-<h1>Login Page</h1>
+	<main id = "login-container">
+		<img src="/img/seattle_preview.jpg" id="login-page-img">
+		<div class="login-nav-wrapper">
+			<a class="sign-up-authnav" href="/auth/signup">Sign Up</a>
+			<a class="login-authnav authnav-active" href="/">Login</a>
+		</div>	
+		<div class="login-wrapper">
+			<form method="POST" action="login">
+				<div class="login-form form-group">
+					<input type="text" name="username" placeholder="Username" class="form-control">
+				</div>
+				<div class="login-form form-group">
+					<input type="password" name="password" placeholder="Password" class="form-control">
+				</div>
+				<input type="submit" name="submit-btn" class="btn btn-success" id="auth-login-btn" value="Login">
+				<a id = "auth-forgot-pass" href="/auth/recovery">Forgot password ?</a>
+			</form>
+		</div>
+	</main>
 </body>
 </html>

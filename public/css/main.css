@@ -3,6 +3,7 @@ html,body{
 	width:100%;
 	height:100%;
 }
+div#preload { display: none; }
 /*signup page stuff*/
 #sign-up-container{
 	width:100%;
@@ -16,10 +17,10 @@ html,body{
 	top: 14vw;
 	left: 5vw;
 }
-.auth-nav-wrapper{
+.sign-up-nav-wrapper{
 	position: absolute;
-	left: 65vw;
-	top: 5vw;
+	left: 64.25vw;
+	top: 7.5vw;
 }
 .sign-up-authnav,.login-authnav{
 	font-size: 2em;
@@ -45,12 +46,7 @@ html,body{
 	position: absolute;
 	width: 14vw;
 	left: 1vw;
-	margin-top: 2em;
-}
-#auth-has-act{
-	position: absolute;
-	right: 2vw;
-	margin-top: 2.5em;
+	margin-top: 1em;
 }
 .sign-up-form{
 	margin-top:2em;
@@ -61,6 +57,60 @@ html,body{
 .authnav-active{
 	text-decoration: underline!important;
 }
+#auth-has-act{
+	position: absolute;
+	margin-top: 1.5em;
+	right: 2vw;
+	color: snow;
+}
+#auth-has-act a{
+	color:snow;
+}
+/*login page stuff*/
+#login-container{
+	width:100%;
+	height: 100%;
+	background-color:#807b7b6e;
+}
+.login-nav-wrapper{
+	position: absolute;
+	left: 40.2vw;
+	top: 12vw;
+}
+.login-wrapper{
+	width: 35vw;
+	height: 36vw;
+	position: absolute;
+	top: 18vw;
+	left: 33.5vw;
+}
+.login-form{
+	margin-top: 2em
+}
+.login-form input{
+	height:3.5em;
+}
+#auth-login-btn{
+	width: 13em;
+	margin-left: 1em;
+}
+#auth-forgot-pass{
+	display: inline-block;
+	margin-left: 4em;
+	font-size: 1.2em;
+	color: snow;
+}
+#login-page-img{
+	position: absolute;
+	top:0;
+	left:0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+}
+
+
+
 
 
 
@@ -77,7 +127,7 @@ html,body{
 
 /*footer*/
 footer{
-	background-color:#949494;
+	background-color: #949494d4;
 	overflow:auto;
 	position: absolute;
 	bottom:0;
@@ -89,6 +139,7 @@ footer{
 	float:right;
 	margin-right: 8em;
 }
+
 
 
 

@@ -4,7 +4,10 @@ var db = require('../models');
 var isLoggedIn = require('../middleware/isLoggedIn');
 var router = express.Router();
 
-router.get('/home',isLoggedIn, function(req, res){
+// router.get('/home',isLoggedIn, function(req, res){
+//   res.render('profile/home');
+// });
+router.get('/home', function(req, res){
   res.render('profile/home');
 });
 
