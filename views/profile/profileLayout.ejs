@@ -3,11 +3,18 @@
 	<link rel="preload" href="/img/seattle_preview.jpg" as="img">
 <head>
 	<title>Crypto App</title>
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	  <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-	  <link rel="stylesheet" type="text/css" href="/css/main.css">
-	  <link rel="stylesheet" type="text/css" href="/css/profile.css">
-	  <link rel="stylesheet" type="text/css" href="/css/footer.css">
+	<!--libs / fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.4/css/mdb.min.css">
+	<script src="//code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.4/js/mdb.min.js"></script>
+	<!-- my files -->
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/css/profile.css">
+	<link rel="stylesheet" type="text/css" href="/css/footer.css">
 </head>
 <body>
 	<!--nav for logged in users -->
@@ -18,19 +25,18 @@
 			<li id="nav-msg-btn" class="glyphicon glyphicon-comment"></li>
 		</ul>
 	</nav>
-    <!--DO NOT INSERT HTML AFTER HERE-->
+    <!--User view-->
 	<div id="rendered-view">
 		<%-body%>
 	</div>
-	<footer>
-		<a class = "privacy-link" href="/privacy">Privacy</a>
-	</footer>
+	<!--End user view-->
 	<div class="preload">
 	   <img src="/img/seattle_preview.jpg" width="1" height="1" >
 	</div>
+	<footer class="footer">
+		<a class = "privacy-link" href="/privacy">Privacy</a>
+	</footer>
 	<!-- Scripts -->
-	<script src="//code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/js/navbar.js"></script>
 </body>
 </html>

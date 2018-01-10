@@ -1,4 +1,6 @@
-
+footer{
+	bottom:-4em!important; /*offsets the margin in the view*/
+}
 /*profile layout stuff*/
 #rendered-view{
 	margin-top: 4em;
@@ -49,7 +51,49 @@ li{
 	cursor: pointer;
 }
 
+/*end profileLayout*/
 
+/*start profile dash*/
 
+/*Greeting text*/
+#dash-greeting-wrapper{
+	font-family: 'Raleway', sans-serif;
+	width: 100%;
+	height: 7em;
+	position: relative;
+	left: 0;
+	top: 3vw;
+	text-align: center;
+}
+#dash-hello-greeting{
+	font-weight: bolder;
+	font-size: 3.5em;
+}
+#dash-greeting{
+	font-size: 1.2em;
+	margin: .5em;
+}
 
+/*data text*/
+#dash-worth-wrapper{
+	position: relative;
+	top: 2.5em;
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+	font-size: 2.5em;
+	width: 64%;
+}
 
+#dash-worth-wrapper p{
+	display: inline-block;
+	font-weight: bold;
+}
+
+/*data charts*/
+#dash-doughnut{
+	width:28vw!important;
+	height:28vw!important;
+	position: absolute;
+	top: 25em;
+	left: 7em;
+}
