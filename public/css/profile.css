@@ -100,3 +100,10 @@ li{
 	top: 25em;
 	left: 7em;
 }
+#dash-line{
+	position: absolute;
+	right: 2.5vw;
+	width: 50vw!important;
+	height: 34vw!important;
+	margin-top: 3em;
+}

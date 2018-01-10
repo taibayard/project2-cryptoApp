@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<link rel="preload" href="/img/seattle_preview.jpg" as="img">
+	<link rel="preload" href="/img/seattle_preview.jpg" as="image">
 <head>
 	<title>Crypto App</title>
 	<!--libs / fonts -->
@@ -10,11 +10,11 @@
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.4/css/mdb.min.css">
 	<script src="//code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.4/js/mdb.min.js"></script>
 	<!-- my files -->
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 	<link rel="stylesheet" type="text/css" href="/css/profile.css">
 	<link rel="stylesheet" type="text/css" href="/css/footer.css">
+
 </head>
 <body>
 	<!--nav for logged in users -->
@@ -27,6 +27,8 @@
 	</nav>
     <!--User view-->
 	<div id="rendered-view">
+		<!--not sure why this script needs to be rendered in the body...-->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.4/js/mdb.min.js"></script>
 		<%-body%>
 	</div>
 	<!--End user view-->

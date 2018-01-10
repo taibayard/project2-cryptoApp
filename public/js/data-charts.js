@@ -1,3 +1,6 @@
+//using iify functions for variable scopes.
+
+//doughnut
 (function() {
     var ctxD = document.getElementById("dash-doughnut").getContext('2d');
     var myLineChart = new Chart(ctxD, {
@@ -15,3 +18,28 @@
         }
     });
 }());
+
+//line
+var ctxL = document.getElementById("dash-line").getContext('2d');
+var myLineChart = new Chart(ctxL, {
+    type: 'line',
+    data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [{
+            label: "Account Worth",
+            backgroundColor: "rgba(50, 160, 52,0.2)",
+            borderWidth: 2,
+            borderColor: "rgba(50, 160, 52,1)",
+            pointBackgroundColor: "rgba(50, 160, 52,1)",
+            pointBorderColor: "#fff",
+            pointBorderWidth: 1,
+            pointRadius: 4,
+            pointHoverBackgroundColor: "rgba(50, 160, 52,1)",
+            pointHoverBorderColor: "rgba(50, 160, 52,1)",
+            data: [332, 120, 209, 90, 330, 345, 330]
+        }]
+    },
+    options: {
+        responsive: false
+    }
+});
