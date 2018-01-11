@@ -1,14 +1,13 @@
-/*signup page stuff*/
-#sign-up-video{position: absolute;left: 10vw;top: 15vw;width: 37vw;height: 26vw;}
-#sign-up-container{
+main{
+	width:100%;
+	height: 100%;
+	position: relative;
+	background-color:#807b7b6e;
 	top: 0;
 	left: 0;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background-color:#807b7b6e;
-	/*background-image: url("http://static1.squarespace.com/static/593bf1a917bffc1f7c5c8c79/59813cd2bf629ae5999399e3/5a1ecd17c83025aa86077640/1513186706972/Satoshi-Bitcoin-Crypto-Currency-Btc-Cryptocurrency-1923207.png?format=1000w");*/
 }
+/*signup page stuff*/
+#sign-up-video{position: absolute;left: 10vw;top: 15vw;width: 37vw;height: 26vw;}
 #sign-up-img{
 	width: 52vw;
 	position: relative;
@@ -66,14 +65,6 @@
 	color:snow;
 }
 /*login page stuff*/
-#login-container{
-	width:100%;
-	height: 100%;
-	position: absolute;
-	background-color:#807b7b6e;
-	top: 0;
-	left: 0;
-}
 .login-nav-wrapper{
 	position: absolute;
 	left: 40.2vw;

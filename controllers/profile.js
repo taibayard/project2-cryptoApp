@@ -10,6 +10,7 @@ var profileView = { layout: 'profile/profileLayout.ejs' }
 // });
 router.get('/dash', function(req, res){
   res.render('profile/dash',profileView);//rendering custom view instead of layout.ejs
+  console.log(req);
 });
 
 module.exports = router;

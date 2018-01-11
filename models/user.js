@@ -19,5 +19,9 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
+  user.prototype.toJSON = function(){
+    var user = this.get();
+    return user;
+  }
   return user;
 };

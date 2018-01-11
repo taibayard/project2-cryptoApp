@@ -1,9 +1,7 @@
-footer{
-	bottom:-4em!important; /*offsets the margin in the view*/
-}
 /*profile layout stuff*/
 #rendered-view{
 	margin-top: 4em;
+	margin-bottom: 4em;
 }
 /*nav stuff*/
 nav{
@@ -90,14 +88,12 @@ li{
 }
 
 /*data charts*/
-#data-charts-wrapper{
-
-}
+#data-charts-wrapper{width: 100%;position: relative;height: 40vw;}
 #dash-doughnut{
 	width:28vw!important;
 	height:28vw!important;
 	position: absolute;
-	top: 25em;
+	margin-top: 6em;
 	left: 7em;
 }
 #dash-line{
