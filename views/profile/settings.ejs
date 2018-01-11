@@ -1,1 +1,20 @@
-<h1>Working settings page</h1>
+<body>
+
+<nav id="settings-nav">
+	<ul id="settings-nav-items">
+		<li class="settings-nav-li selected-settings-nav" id="settings-profile-btn">Profile</li>
+		<li class="settings-nav-li" id="settings-pass-btn">Password</li>
+		<li class="settings-nav-li" id="settings-notification-btn">Notifications</li>
+		<li class="settings-nav-li" id="settings-advanced-btn">Advanced</li>
+	</ul>
+</nav>
+<div id="profile-settings-wrapper">
+	
+</div>
+<!--Run at end-->
+<script type="text/javascript">
+	<%-delete user.password;%>
+	var user = <%-JSON.stringify(user)%>
+</script>
+<script type="text/javascript" src="/js/settings.js"></script>
+</body>
