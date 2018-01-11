@@ -3,8 +3,8 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var ejsLayouts = require('express-ejs-layouts');
 var flash = require('connect-flash');
-var passport = require('./config/passportConfig');
 var isLoggedIn = require('./middleware/isLoggedIn');
+var passport = require('./config/passportConfig');
 var session = require('express-session');
 var app = express();
 
@@ -29,7 +29,7 @@ app.use(function(req, res, next){
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', isLoggedIn, function(req, res){
-	res.render("index");
+	res.redirect("/profile/dash");
 });
 app.get('/privacy', function(req, res){
 	res.render("privacy");

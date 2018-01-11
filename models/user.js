@@ -1,10 +1,42 @@
 'use strict';
+var bcrypt = require('bcrypt');
+
 module.exports = (sequelize, DataTypes) => {
   var user = sequelize.define('user', {
-    username: DataTypes.TEXT,
-    password: DataTypes.TEXT,
-    email: DataTypes.TEXT,
-    phone: DataTypes.TEXT,
+    username:{
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    password:{
+      type: DataTypes.TEXT,
+      validate: {
+        len: {
+          args: [6, 32],
+          msg: 'Password must be between 6 and 32 characters long'
+        }
+      }
+    },
+    email: {
+      type: DataTypes.TEXT,
+      validate: {
+        isEmail: {
+          msg: 'Invalid email address format'
+        }
+      }
+    },
+    phone: {
+      type: DataTypes.TEXT,
+      validate: {
+        isNumeric: {
+          msg: 'Invalid phone number format'
+        },
+        len: {
+          args: [10,11],
+          msg: 'Invalid phone number format'
+        }
+      },
+      allowNull: false
+    },
     firstname: DataTypes.TEXT,
     lastname: DataTypes.TEXT,
     dob: DataTypes.DATE,
@@ -13,14 +45,28 @@ module.exports = (sequelize, DataTypes) => {
     followers: DataTypes.TEXT,
     currencies: DataTypes.TEXT
   }, {
+    hooks: {
+      beforeCreate: function(pendingUser, options){
+        if(pendingUser && pendingUser.password){
+          var hash = bcrypt.hashSync(pendingUser.password, 10);
+          pendingUser.password = hash;
+        }
+      }
+    },
     classMethods: {
       associate: function(models) {
         // associations can be defined here
       }
     }
   });
+
+  user.prototype.isValidPassword = function(passwordTyped){
+    return bcrypt.compareSync(passwordTyped, this.password);
+  }
+
   user.prototype.toJSON = function(){
     var user = this.get();
+    delete user.password;
     return user;
   }
   return user;

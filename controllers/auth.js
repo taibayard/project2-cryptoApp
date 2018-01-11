@@ -3,25 +3,8 @@ var passport = require('../config/passportConfig');
 var db = require('../models');
 var router = express.Router();
 
-// create user template ?
-// db.user.create({
-//         username: "BobisUsername",
-//         password: "bob123supersecretpass",
-//         email: "bob@test.com",
-//         phone: "555-555-5555",
-//         firstname: "Bob",
-//         lastname: "Ross",
-//         dob: "9/11/1990",
-//         bio: "I AM BOB",
-//         currencies: "{kin:{owned:210000},bitcoin:{owned:.3049},ethereum:{owned:2.3902}}"
-//     }).then(function(ceatedItem) {
-//         res.render('auth/signup');
-//     }).catch(function(err) {
-//         res.send("error");
-//     });
-    
 router.get('/signup', function(req, res) {
-   res.render("auth/signup")
+    res.render("auth/signup")
 });
 router.get('/login', function(req, res) {
     res.render('auth/login');
@@ -29,14 +12,39 @@ router.get('/login', function(req, res) {
 router.get("/recovery", function(req, res) {
     res.render("auth/recovery");
 })
-router.post('/login', function(req, res) {
-    // res.send("post login route reached");
-    res.redirect("/profile/dash")
-});
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/profile/dash',
+  successFlash: 'Login Successful!',
+  failureRedirect: '/auth/login',
+  failureFlash: 'Invalid Credentials'
+}));
 
-router.post('/signup', function(req, res) {
-    // res.send("post signup route reached");
-    res.redirect("/profile/dash")
+router.post('/signup', function(req, res, next) {
+    db.user.findOrCreate({
+        where: {
+            email: req.body.email
+        },
+        defaults: {
+            username: req.body.username,
+            phone: req.body.phone,
+            password: req.body.password
+        }
+    }).spread(function(user, wasCreated) {
+        if (wasCreated) {
+            //Success
+            passport.authenticate('local', {
+                successRedirect: '/profile/dash',
+                successFlash: 'Successfully logged in'
+            })(req, res, next);
+        } else {
+            //Contains duplicate ( fail )
+            req.flash('error', 'Email already exists');
+            res.redirect('/auth/login');
+        }
+    }).catch(function(err) {
+        req.flash('error', err.message);
+        res.redirect('/auth/signup');
+    });
 });
 
 router.get('/logout', function(req, res) {

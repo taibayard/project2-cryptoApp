@@ -7,7 +7,12 @@
 </head>
 	<div id="dash-greeting-wrapper">
 		<h1 id="dash-hello-greeting">
-			Hello, TaiHolderName
+			Hello, 
+			<%if(user.firstname === null){%>
+				<%=user.username%>
+			<%}else{%>
+				<%=user.firstname%>
+			<%}%>
 		</h1>
 		<p id="dash-greeting">
 			Here's an overview of your account :
@@ -24,7 +29,6 @@
 		<div style="border-left: 1px solid #eee;height: 32vw;position: absolute;left: 43vw;margin-top: 5em;"></div>
 		<canvas id="dash-line"></canvas>
 	</div>
-
 	<script type="text/javascript" src="/js/data-charts.js"></script>
 </body>
 </html>
