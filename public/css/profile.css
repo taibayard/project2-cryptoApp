@@ -1,15 +1,12 @@
 /*profile layout stuff*/
 #rendered-view{
-	margin-top: 4em;
-	margin-bottom: 4em;
+	height: 100%;
 }
 /*nav stuff*/
 nav{
 	width:100%;
 	height: 4em;
-	position:absolute;
-	top:0;
-	left:0;
+	position: relative;
 	background-color: #000000c4;
 }
 nav .hamburger-icon{
@@ -103,3 +100,25 @@ li{
 	height: 34vw!important;
 	margin-top: 3em;
 }
+
+/*settings stuff*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
