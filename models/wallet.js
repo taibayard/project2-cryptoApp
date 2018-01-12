@@ -2,8 +2,19 @@
 module.exports = (sequelize, DataTypes) => {
   var wallet = sequelize.define('wallet', {
     userId: DataTypes.INTEGER,
-    address: DataTypes.STRING,
-    type: DataTypes.STRING
+    address: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [10, 200],
+          msg: 'Invalid wallet length'
+        }
+      }
+    },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     classMethods: {
       associate: function(models) {

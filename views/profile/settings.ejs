@@ -13,11 +13,29 @@
 </div>
 <div class="settings-items-wrappers" id="add-wallet-wrapper">
 		<label class="add-wallet-label">Add Wallet</label>
-		<form class ="wallet-form-wrapper" method="POST">
+		<form class ="wallet-form-wrapper" method="POST" action="settings/wallet">
 			<div class="wallet-form form-group">
 				<input type="text" name="wallet" placeholder="Wallet Address" class="form-control wallet-input">
 			</div>
-			<input type="submit" value="Add Wallet" class="form-control wallet-submit">
+			<div class="dropdown-wrapper">
+				<!--Dropdown primary-->
+		        <div class="dropdown">
+
+		            <!--Trigger-->
+		            <button class="btn btn-primary dropdown-toggle" type="button" id ="wallet-dropdown-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Wallet Type</button>
+		            
+
+		            <!--Menu-->
+		            <div class="dropdown-menu dropdown-primary">
+		                <a class="wallet-dropdown-item dropdown-item">Bitcoin</a>
+		                <a class="wallet-dropdown-item dropdown-item">Ethereum</a>
+		                <a class="wallet-dropdown-item dropdown-item">Token</a>
+		            </div>
+		        </div>
+		        <!--/Dropdown primary-->
+			</div>
+			<input id="walletTypeInput" type="hidden" name="type" value="">
+			<input type="submit" value="Add Wallet" id="wallet-submit" class="form-control btn btn-primary">
 		</form>
 </div>
 <!--Run at end-->
