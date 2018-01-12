@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var passport = require('../config/passportConfig');
 var db = require('../models');
@@ -11,7 +12,7 @@ var profileView = 'profile/profileLayout.ejs';
 //ethplorer api
 let ethplorer = {
 	baseUrl: "https://api.ethplorer.io/",
-	key: "?apiKey=freekey",
+	key: "?apiKey="+process.env.ethplorerKey,
     getWallet: function(address) {
     	return new Promise(function(resolve, reject) {
     		request.get(ethplorer.baseUrl + "getAddressInfo/" + address + ethplorer.key, function(error, response, body) {
@@ -35,8 +36,6 @@ router.get("/settings", isLoggedIn, function(req, res) {
         user: userData
     });
 })
-
-
 
 //settings posts
 router.post("/settings/wallet", isLoggedIn, function(req, res) {
