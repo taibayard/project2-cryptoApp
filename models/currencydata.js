@@ -1,8 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var cryptodata = sequelize.define('cryptodata', {
-    name: DataTypes.TEXT,
-    data: DataTypes.TEXT
+  var currencyData = sequelize.define('currencyData', {
+    current: DataTypes.TEXT,
+    history: DataTypes.TEXT
   }, {
     classMethods: {
       associate: function(models) {
@@ -10,5 +10,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-  return cryptodata;
+  return currencyData;
 };
