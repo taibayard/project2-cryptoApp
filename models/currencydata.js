@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var currencyData = sequelize.define('currencyData', {
+  var currencydata = sequelize.define('currencydata', {
     current: DataTypes.TEXT,
     history: DataTypes.TEXT
   }, {
@@ -10,5 +10,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-  return currencyData;
+  return currencydata;
 };

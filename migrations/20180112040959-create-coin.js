@@ -15,9 +15,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       owned: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
-      purchaseDate: {
+      purchasedate: {
         type: Sequelize.STRING
       },
       createdAt: {

@@ -7,8 +7,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        models.article.belongsTo(models.user);
-        models.article.hasMany(models.coin);
+        models.wallet.belongsTo(models.user);
+        models.wallet.hasMany(models.coin);
       }
     }
   });
