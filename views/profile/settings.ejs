@@ -37,13 +37,17 @@
 			<input id="walletTypeInput" type="hidden" name="type" value="">
 			<input type="submit" value="Add Wallet" id="wallet-submit" class="form-control btn btn-primary">
 		</form>
-		<div id="db-wallets-wrapper">
-			<ul>
+		<div id="displayed-wallets-wrapper">
+			<label class="user-wallets-label">Your Wallets</label>
+			<ul class="list-group">
 				<% if(wallet.length <= 0 ){%>
 					<h2> Nothing in the database yet...</h2>
 				<%} else {%>
 					<%wallet.forEach(function(item){%>
-						<li><%=item.address%></li>
+						<li class="list-group-item wallet-address-item">
+							<a><%=item.address%></a>  
+							<button class="btn btn-danger wallet-address-delete-btn">Delete</button>
+						</li>
 					<%});%>
 				<% } %>
 			</ul>

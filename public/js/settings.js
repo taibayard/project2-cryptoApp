@@ -27,3 +27,13 @@ function selectedWalletType(e){
 		})
 	}
 })();
+//adding event listeners for wallete delete buttons
+(function(){
+	let x = document.getElementsByClassName("wallet-address-delete-btn");
+	for(let i =0;i<x.length;i++){
+		x[i].addEventListener("click",function(){
+			let address = this.parentElement.getElementsByTagName("a")[0].innerText;
+			console.log(address,"Is to be deleted");
+		})
+	}
+})();

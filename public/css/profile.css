@@ -208,5 +208,20 @@ li{
 #selectedWalletDropdown:before{
 	content: "✓ ";
 }
+.user-wallets-label{
+	font-size:4em;
+	font-weight: inherit;
+	width: 100%;
+	text-align: center;
+	margin-top: 1.5em;
+}
+
+#displayed-wallets-wrapper{text-align: center;width: 56vw;position: relative;left: 22vw;}
+.wallet-address-item{
+
+}
+.wallet-address-delete-btn{
+	margin-left: 16vw;
+}
 /*end wallet page*/
 
