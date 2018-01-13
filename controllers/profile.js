@@ -17,18 +17,15 @@ let ethplorer = {
         return new Promise(function(resolve, reject) {
             request.get(ethplorer.baseUrl + "getAddressInfo/" + address + ethplorer.key, function(error, response, body) {
                 let parsedBody = JSON.parse(body);
-                try{
-                	console.log(parsedBody.tokens.length);
-                	 resolve(parsedBody);
-                }catch(err){
+                if(parsedBody.ETH.balance>=0 || parsedBody.tokens){
+                	resolve(parsedBody);
+                }else{
                 	resolve(error);
                 }
             })
         });
-    }
-}
-
-function convertBalance(bal, dec) {
+    },
+    convertBalance: function(bal, dec) {
     //test code
     bal = bal.toString();
     if (bal.indexOf("e") != -1) {
@@ -49,7 +46,6 @@ function convertBalance(bal, dec) {
         let temp = bal.split("");
         temp.splice(offset,0,".");
         bal = temp.join("");
-        console.log(temp);
     } else {
         //coin balance is less than 0 so it is a decimal
         offset *= -1;
@@ -62,6 +58,7 @@ function convertBalance(bal, dec) {
     return parseFloat(bal);
 }
 
+}
 //get routes for pages.
 router.get('/dash', isLoggedIn, function(req, res) {
     userData = res.locals.currentUser.dataValues;
@@ -72,10 +69,21 @@ router.get('/dash', isLoggedIn, function(req, res) {
     });
 });
 router.get("/settings", isLoggedIn, function(req, res) {
-    res.render('profile/settings', {
-        layout: profileView,
-        user: userData
-    });
+    db.wallet.findAll({
+        where: {
+            userId: userData.id
+        }
+    }).then(function(wallets) {
+	    res.render('profile/settings', {
+	        layout: profileView,
+	        user: userData,
+	        wallet : wallets
+	    })
+	    res.send(wallets);
+	}).catch(function(err) {
+        //no wallets exist?
+        res.send("error finding existing wallets");
+    })
 })
 
 //settings posts
@@ -83,23 +91,68 @@ router.post("/settings/wallet", isLoggedIn, function(req, res) {
     //pulling params from body
     let type = req.body.type.toLowerCase();
     let address = req.body.wallet;
-
+    //checking type of coin then making api request
     switch (type) {
         case "token":
         case "ethereum":
+        	type="ethereum/token";
             //handle request to ethereum based walllet
             let walletRequest = ethplorer.getWallet(address);
-            //runs at end of promist (when request is done)
+            //runs at end of promise (when request is done)
             walletRequest.then(function(walletData) {
+            	if(!walletData.tokens){
+            		if(walletData.ETH.balance > 0){
+            			//do something with ether coins
+            		}else{
+            			//no coins in wallet
+            			res.send("No coins in wallet");
+            		}
+            	}
                 for(let i =0;i<walletData.tokens.length;i++){
-                	walletData.tokens[i].balance = convertBalance(walletData.tokens[i].balance,walletData.tokens[i].tokenInfo.decimals)
+                	walletData.tokens[i].balance = ethplorer.convertBalance(walletData.tokens[i].balance,walletData.tokens[i].tokenInfo.decimals)
                 }
                 return walletData;
             }).then(function(result){
-            	res.send(result);
-            })
-            walletRequest.catch(function(err) {
-                    res.send(err);
+            	//time to create wallet and add coins
+	            db.wallet.findOrCreate({
+	                where: {
+	                    address: address.toLowerCase(),
+	                	userId : userData.id
+	                },
+	                defaults: {
+	                    type: type
+	                }
+	            }).spread(function(wallet, wasCreated) {
+	                if (wasCreated) {
+	                	//was no duplicate add coins to database
+	                	//add ETH if balance > 0 
+	                	if(result.ETH.balance > 0){
+	                        db.coin.create({
+	                            walletId: wallet.id,
+	                            name: "ETH",
+	                            owned: result.ETH.balance
+	                        });
+	                	}
+	                	//add tokens
+	                	result.tokens.forEach(function(coin){
+	                        db.coin.create({
+	                        	walletId:wallet.id,
+	                        	name:coin.tokenInfo.symbol,
+	                        	owned:coin.balance
+	                        });
+	                	});
+	                } else {
+	                    //Contains duplicate ( fail )
+	                    res.send("wallet already exists")
+	                }
+	            }).catch(function(err) {
+	                res.send("Error adding wallet");
+	            });
+
+            	//going back to settings
+	            res.redirect('/profile/settings');
+            }).catch(function(err) {
+                res.send("Error getting wallet");
             });
                 // res.redirect("/settings");
             break;
@@ -110,7 +163,7 @@ router.post("/settings/wallet", isLoggedIn, function(req, res) {
             break;
         default:
             res.send("ERROR INVALID WALLET TYPE");
-            break;
+        break;
     }
 });
 module.exports = router;

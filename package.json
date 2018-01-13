@@ -4,6 +4,7 @@
   "description": "Displays data relating to crypto currencies. Alerts users about changes in crypto currency prices based on user preferences.",
   "main": "index.js",
   "dependencies": {
+    "async": "^2.6.0",
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "connect-flash": "^0.1.1",
