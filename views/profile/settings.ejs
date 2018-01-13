@@ -38,19 +38,19 @@
 			<input type="submit" value="Add Wallet" id="wallet-submit" class="form-control btn btn-primary">
 		</form>
 		<div id="displayed-wallets-wrapper">
+			<% if(wallet.length > 0 ){%>
 			<label class="user-wallets-label">Your Wallets</label>
 			<ul class="list-group">
-				<% if(wallet.length <= 0 ){%>
-					<h2> Nothing in the database yet...</h2>
-				<%} else {%>
-					<%wallet.forEach(function(item){%>
-						<li class="list-group-item wallet-address-item">
-							<a><%=item.address%></a>  
-							<button class="btn btn-danger wallet-address-delete-btn">Delete</button>
-						</li>
-					<%});%>
-				<% } %>
-			</ul>
+				<%wallet.forEach(function(item){%>
+					<li class="list-group-item wallet-address-item">
+						<a><%=item.address%></a>
+						<a class ="btn btn-danger delete-link wallet-address-delete-btn">
+							Delete Post
+						</a>
+					</li>
+				<%});%>
+				</ul>
+			<%} %>
 		</div>
 </div>
 <!--Run at end-->

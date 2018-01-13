@@ -217,9 +217,7 @@ li{
 }
 
 #displayed-wallets-wrapper{text-align: center;width: 56vw;position: relative;left: 22vw;}
-.wallet-address-item{
-
-}
+.wallet-address-item{margin-top: 1.5em;}
 .wallet-address-delete-btn{
 	margin-left: 16vw;
 }
