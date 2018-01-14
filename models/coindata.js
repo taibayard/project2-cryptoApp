@@ -1,7 +1,9 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var currencydata = sequelize.define('currencydata', {
-    current: DataTypes.TEXT,
+  var coindata = sequelize.define('coindata', {
+    name: DataTypes.STRING,
+    symbol: DataTypes.STRING,
+    value: DataTypes.STRING,
     history: DataTypes.TEXT
   }, {
     classMethods: {
@@ -10,5 +12,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-  return currencydata;
+  return coindata;
 };

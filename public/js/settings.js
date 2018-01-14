@@ -37,7 +37,7 @@ function selectedWalletType(e) {
 			url : "/profile/settings/"+address,
 			method:"DELETE"
 		}).then(function(data){
-			window.location.href = "/profile/settings";
+			location.reload();
 		});
 	});
 })();

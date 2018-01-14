@@ -89,11 +89,11 @@ li{
 /*data charts*/
 #data-charts-wrapper{width: 100%;position: relative;height: 40vw;}
 #dash-doughnut{
-	width:28vw!important;
-	height:28vw!important;
+	width: 35vw!important;
+	height: 35vw!important;
 	position: absolute;
-	margin-top: 6em;
-	left: 7em;
+	margin-top: 3em;
+	left: 1em;
 }
 #dash-line{
 	position: absolute;

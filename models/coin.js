@@ -4,11 +4,11 @@ module.exports = (sequelize, DataTypes) => {
     walletId: DataTypes.INTEGER,
     name: DataTypes.STRING,
     owned: DataTypes.STRING,
-    purchasedate: DataTypes.STRING
+    value: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
-        models.coin.belongsTo(models.wallet);
+         models.coin.belongsTo(models.wallet);
       }
     }
   });

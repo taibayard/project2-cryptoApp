@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/footer.css">
 
 </head>
+		<%if(coins.length > 0){%>
 	<div id="dash-greeting-wrapper">
 		<h1 id="dash-hello-greeting">
 			Hello, 
@@ -29,6 +30,22 @@
 		<div style="border-left: 1px solid #eee;height: 32vw;position: absolute;left: 43vw;margin-top: 5em;"></div>
 		<canvas id="dash-line"></canvas>
 	</div>
+	<script type="text/javascript">
+		var coins = <%-JSON.stringify(coins)%>
+	</script>
 	<script type="text/javascript" src="/js/data-charts.js"></script>
+	<%}else{%>
+	<div id="dash-greeting-wrapper" style="height:100%!important">
+		<h1 id="dash-hello-greeting"">
+			Hello, 
+			<%if(user.firstname === null){%>
+				<%=user.username%>
+			<%}else{%>
+				<%=user.firstname%>
+			<%}%>
+		</h1>
+		<h1>Add a wallet address to your portfolio to see your coins</h1>
+	</div>
+	<%}%>
 </body>
 </html>

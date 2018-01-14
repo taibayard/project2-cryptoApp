@@ -1,18 +1,24 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('currencydata', {
+    return queryInterface.createTable('coins', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      current: {
-        type: Sequelize.TEXT
+      walletId: {
+        type: Sequelize.INTEGER
       },
-      history: {
-        type: Sequelize.TEXT
+      name: {
+        type: Sequelize.STRING
+      },
+      owned: {
+        type: Sequelize.STRING
+      },
+      value: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -25,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('currencydata');
+    return queryInterface.dropTable('coins');
   }
 };

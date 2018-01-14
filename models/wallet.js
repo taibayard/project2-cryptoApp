@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    value: DataTypes.STRING,
+    valuehistory: DataTypes.STRING,
     type: {
       type: DataTypes.STRING,
       allowNull: false
