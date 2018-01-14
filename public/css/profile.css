@@ -85,7 +85,9 @@ li{
 	display: inline-block;
 	font-weight: bold;
 }
-
+#user-worth{
+	font-family: 'PT Sans', sans-serif;
+}
 /*data charts*/
 #data-charts-wrapper{width: 100%;position: relative;height: 40vw;}
 #dash-doughnut{

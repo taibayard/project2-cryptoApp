@@ -78,5 +78,5 @@ function randomColorsArray(n){
         });
 }());
 
-document.getElementById("user-worth").innerText = "$" + walletValue.toFixed(2);
+document.getElementById("user-worth").innerHTML = " &nbsp;&nbsp;$" + walletValue.toFixed(2);
 
