@@ -21,7 +21,7 @@ let ethplorer = {
         return new Promise(function(resolve, reject) {
             request.get(ethplorer.baseUrl + "getAddressInfo/" + address + ethplorer.key, function(error, response, body) {
                 let parsedBody = JSON.parse(body);
-                if (parsedBody.ETH.balance >= 0 || parsedBody.tokens) {
+                if (parsedBody.ETH && ( parsedBody.ETH.balance >= 0 || parsedBody.tokens)) {
                     resolve(parsedBody);
                 } else {
                     resolve(error);
@@ -63,12 +63,12 @@ let ethplorer = {
     }
 }
 var coinmarket = {
-    baseUrl:"https://api.coinmarketcap.com/v1/ticker/?start=0&limit=1001",
-    getCoins:function(){
+    baseUrl: "https://api.coinmarketcap.com/v1/ticker/?start=0&limit=1001",
+    getCoins: function() {
         return new Promise(function(resolve, reject) {
             request.get(coinmarket.baseUrl, function(error, response, body) {
                 let parsedBody = JSON.parse(body);
-                if (parsedBody.length> 0) {
+                if (parsedBody.length > 0) {
                     resolve(parsedBody);
                 } else {
                     resolve(error);
@@ -77,7 +77,8 @@ var coinmarket = {
         });
     }
 }
-function updateCoinValues(){
+
+function updateCoinValues() {
     db.coin.findAll().then(function(coins) {
         //setting all coins values to data from coindata
         coins.forEach(function(coin) {
@@ -103,85 +104,109 @@ function updateCoinValues(){
 router.get('/dash', isLoggedIn, function(req, res) {
     userData = res.locals.currentUser.dataValues;
     delete userData.password;
-    db.coindata.findAll().then(function(coinsdata) {
-        if(coinsdata.length<1){
-            //no coins in coindata db
-            let coinmarketData = coinmarket.getCoins();
-            coinmarketData.then(function(response){
-                response.forEach(function(coin){
-                   db.coindata.create({
-                        name:coin.name,
-                        symbol:coin.symbol,
-                        value:coin.price_usd
-                   });
-                });
-            }).then(function(result){
-                //coindata information was created
-                updateCoinValues();
-            }).catch(function(err){
-                console.log("Error pulling coins from marketplace");
-            })
-        }else{
-            db.coindata.findOne({
-                where:{symbol:"BTC"}
-            }).then(function(item){
-                var dateCreated = new Date(item.updatedAt);
-                var ms = dateCreated.getTime(); //milliseconds
-                var now = new Date();
-                var currentMs = now.getTime(); //current milliseconds
-                var updateTimer = currentMs-ms;
-                if(updateTimer >= 1800000){
-                    //1800000 = 30 minutes time to pull new api data & update coin data
+    db.wallet.findAll({
+        where: {
+            userId: userData.id
+        }
+    }).then(function(wallets) {
+        if (wallets.length > 0) {
+
+            db.coindata.findAll().then(function(coinsdata) {
+                if (coinsdata.length < 1) {
+                    //no coins in coindata db
                     let coinmarketData = coinmarket.getCoins();
                     coinmarketData.then(function(response) {
                         response.forEach(function(coin) {
-                            db.coindata.findOne({
-                                where: {
-                                    symbol: coin.symbol
-                                }
-                            }).then(function(cdItem) {
-                                cdItem.updateAttributes({
-                                    value: coin.price_usd
-                                });
+                            db.coindata.create({
+                                name: coin.name,
+                                symbol: coin.symbol,
+                                value: coin.price_usd
                             });
                         });
+                    }).then(function(result) {
+                        //coindata information was created
+                        updateCoinValues();
                     }).catch(function(err) {
-                        console.log("error getting coin data from API");
+                        console.log("Error pulling coins from marketplace");
                     })
-                }else{
-                    console.log("Coindata will be updated in :",updateTimer," milliseconds");
-                }
-            }).catch(function(err){
-                console.log("error pulling data from coindata db");
-            });
-            console.log("coindata already in database");
-        }
-    }).then(function(result) {
-        db.wallet.findAll({
-            where: {
-                userId: userData.id
-            }
-        }).then(function(wallet) {
-            //found wallet
-            db.coin.findAll({
-                    where: {
-                        walletId: wallet[0].dataValues.id
-                    }
-                }).then(function(coins) {
-                    //found coins
-                    res.render('profile/dash', {
-                        layout: profileView,
-                        user: userData,
-                        coins: coins
+                } else {
+                    //coindata is in db
+                    db.coindata.findOne({
+                        where: {
+                            symbol: "BTC"
+                        }
+                    }).then(function(item) {
+                        //getings dates to be compared
+                        var dateCreated = new Date(item.updatedAt);
+                        var ms = dateCreated.getTime(); //milliseconds
+                        var now = new Date();
+                        var currentMs = now.getTime(); //current milliseconds
+
+                        //difference between current time and date created
+                        var updateTimer = currentMs - ms;
+                        if (updateTimer >= 1800000) {
+                            //1800000 = 30 minutes time to pull new api data & update coin data
+                            let coinmarketData = coinmarket.getCoins();
+                            coinmarketData.then(function(response) {
+                                response.forEach(function(coin) {
+                                    db.coindata.findOne({
+                                        where: {
+                                            symbol: coin.symbol
+                                        }
+                                    }).then(function(cdItem) {
+                                        cdItem.updateAttributes({
+                                            value: coin.price_usd
+                                        });
+                                    });
+                                });
+                            }).catch(function(err) {
+                                console.log("error getting coin data from API");
+                            })
+                        } else {
+                            console.log("Coindata will be updated in :", updateTimer, " milliseconds");
+                        }
+                    }).catch(function(err) {
+                        console.log("error pulling data from coindata db");
                     });
+                    console.log("coindata already in database");
+                }
+            }).then(function(result) {
+                db.wallet.findAll({
+                    where: {
+                        userId: userData.id
+                    }
+                }).then(function(wallet) {
+                    //found wallet
+                    db.coin.findAll({
+                            where: {
+                                walletId: wallet[0].dataValues.id
+                            }
+                        }).then(function(coins) {
+                            //found coins
+                            res.render('profile/dash', {
+                                layout: profileView,
+                                user: userData,
+                                coins: coins
+                            });
+                        })
+                        //need to handle multiple wallets !
+                }).catch(function(err) {
+                    res.send("Error loading dash");
                 })
-                //need to handle multiple wallets !
-        }).catch(function(err) {
-            res.send("Error loading dash");
-        })
+            }).catch(function(err) {
+                res.send("Error getting coin data from database");
+            })
+        } else {
+            console.log("user has no wallets yet");
+            res.render('profile/dash', {
+                layout: profileView,
+                user: userData,
+                coins: []
+            });
+        }
     }).catch(function(err){
-        res.send("Error getting coin data from database");
-    })
+        console.log("error checking if user wallet exists");
+    });
 });
 //gets users settings data
 router.get("/settings", isLoggedIn, function(req, res) {
@@ -200,8 +225,6 @@ router.get("/settings", isLoggedIn, function(req, res) {
         res.send("error finding existing wallets");
     })
 })
-
-/*POST ROUTES*/
 
 //creates wallet in db
 router.post("/settings/wallet", isLoggedIn, function(req, res) {
@@ -244,19 +267,47 @@ router.post("/settings/wallet", isLoggedIn, function(req, res) {
                         //was no duplicate add coins to database
                         //add ETH if balance > 0 
                         if (result.ETH.balance > 0) {
-                            db.coin.create({
-                                walletId: wallet.id,
-                                name: "ETH",
-                                owned: result.ETH.balance
-                            });
+                            db.coindata.findOne({
+                                where:{symbol:"ETH"}
+                            }).then(function(storedCoin){
+                                db.coin.create({
+                                    walletId: wallet.id,
+                                    name: "ETH",
+                                    owned: result.ETH.balance,
+                                    value: storedCoin.value
+                                });
+                            })
                         }
                         //add tokens
                         result.tokens.forEach(function(coin) {
-                            db.coin.create({
-                                walletId: wallet.id,
-                                name: coin.tokenInfo.symbol,
-                                owned: coin.balance
-                            });
+                            //api handles erc20 token symbol differently than coinmarketcap.
+                            if (coin.tokenInfo.symbol === "ERC") {
+                                db.coindata.findOne({
+                                    where: {
+                                        symbol: coin.tokenInfo.name
+                                    }
+                                }).then(function(storedCoin) {
+                                    db.coin.create({
+                                        walletId: wallet.id,
+                                        name: storedCoin.symbol,
+                                        owned: coin.balance,
+                                        value: storedCoin.value
+                                    });
+                                })
+                            } else {
+                                db.coindata.findOne({
+                                    where: {
+                                        symbol: coin.tokenInfo.symbol
+                                    }
+                                }).then(function(storedCoin) {
+                                    db.coin.create({
+                                        walletId: wallet.id,
+                                        name: storedCoin.symbol,
+                                        owned: coin.balance,
+                                        value: storedCoin.value
+                                    });
+                                })
+                            }
                         });
                     } else {
                         //Contains duplicate ( fail )
@@ -295,26 +346,26 @@ router.delete("/settings/:address", function(req, res) {
             userId: userData.id
         }
     }).then(function(wallet) {
-    	//found wallet
+        //found wallet
         db.coin.destroy({
             where: {
                 walletId: wallet.id
             }
         }).then(function(result) {
-        	//deleted coins
+            //deleted coins
             db.wallet.destroy({
                 where: {
                     address: req.params.address,
                     userId: userData.id
                 }
             }).then(function(deleted) {
-            	//deleted wallet
+                //deleted wallet
                 res.send("success");
             });
         });
     }).catch(function(err) {
-    	console.log("was error finding wallet in db");
-       	res.send("was error finding wallet in db");
+        console.log("was error finding wallet in db");
+        res.send("was error finding wallet in db");
     });
 });
 module.exports = router;
