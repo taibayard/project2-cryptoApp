@@ -8,7 +8,8 @@ var isLoggedIn = require('../middleware/isLoggedIn');
 
 var router = express.Router();
 var request = require("request");
-
+                        // 1800000 = 30minutes
+var coindataUpdateTimer = (1800000)/2; //handles when to update the coindata table with the coinmarket api (in milliseconds);
 //stored when user is logged in
 var userData = null;
 //setting custom view instead of ejs layout
@@ -144,8 +145,8 @@ router.get('/dash', isLoggedIn, function(req, res) {
 
                         //difference between current time and date created
                         var updateTimer = currentMs - ms;
-                        if (updateTimer >= 1800000) {
-                            //1800000 = 30 minutes time to pull new api data & update coin data
+                        if (updateTimer >= coindataUpdateTimer) {
+                            //time to update data
                             let coinmarketData = coinmarket.getCoins();
                             coinmarketData.then(function(response) {
                                 response.forEach(function(coin) {
@@ -163,7 +164,8 @@ router.get('/dash', isLoggedIn, function(req, res) {
                                 console.log("error getting coin data from API");
                             })
                         } else {
-                            console.log("Coindata will be updated in :", updateTimer, " milliseconds");
+                            //not time to update data. Logging when next update will be pulled
+                            console.log("Coindata will be updated in :", coindataUpdateTimer - updateTimer, " milliseconds");
                         }
                     }).catch(function(err) {
                         console.log("error pulling data from coindata db");

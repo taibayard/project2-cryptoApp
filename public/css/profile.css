@@ -1,227 +1,260 @@
 /*profile layout stuff*/
-#rendered-view{
-	height: 100%;
+ #rendered-view{
+     height: 100%;
 }
 /*nav stuff*/
-nav{
-	width:100%;
-	height: 4em;
-	position: relative;
-	background-color: #000000c4;
+/* nav{
+     width:100%;
+     height: 4em;
+     position: relative;
+     background-color: #000000c4;
 }
-nav .hamburger-icon{
-	 background-image: url('https://mdbootstrap.com/img/svg/hamburger2.svg?color=fff');
-	 background-size: cover;
-	 background-repeat: no-repeat;
-	 width:100%;
-	 height:100%;
-	 cursor: pointer;
+ nav .hamburger-icon{
+     background-image: url('https://mdbootstrap.com/img/svg/hamburger2.svg?color=fff');
+     background-size: cover;
+     background-repeat: no-repeat;
+     width:100%;
+     height:100%;
+     cursor: pointer;
+}*/
+nav{
+	border-radius: 0!important;
+	margin:0!important;
+}
+.navbar-ul{
+	float:right;
 }
 ul{
-	list-style-type: none;
+     list-style-type: none;
 }
 li{
-	display: inline-block;
+     display: inline-block;
+     width: 6em;
+     margin: 0 1em;
+     text-align: center;
 }
-#nav-tools-btn{
-	width: 3em;
-	height: 3em;
-	margin-top: .4em;
-	margin-left: 1em;
-}
-#nav-name{
-	color: snow;
-	font-size: 2.5em;
-	position: absolute;
-	user-select: none;
-	display: inline-block;
-	width: 86.5vw;
-	text-align: center;
-}
-#nav-msg-btn{
-	color: snow;
-	position: relative;
-	font-size: 2.7em;
-	top: 0.25em;
-	cursor: pointer;
-	float: right;
-	margin-right: 1.5em;
+ li.nav-item.dropdown.open .dropdown-item{
+	width:100%;
+	color:black!important;
 }
 
+ #nav-tools-btn{
+     width: 3em;
+     height: 3em;
+     margin-top: .4em;
+     margin-left: 1em;
+}
+}
+ #nav-name{
+     color: snow;
+     font-size: 2.5em;
+     position: absolute;
+     user-select: none;
+     display: inline-block;
+     width: 86.5vw;
+     text-align: center;
+}
+ #nav-msg-btn{
+     color: snow;
+     position: relative;
+     font-size: 2.7em;
+     top: 0.25em;
+     cursor: pointer;
+     float: right;
+     margin-right: 1.5em;
+}
+/*end nav stuff*/
 /*end profileLayout*/
-
 /*start profile dash*/
-
 /*Greeting text*/
-#dash-greeting-wrapper{
-	font-family: 'Raleway', sans-serif;
-	width: 100%;
-	height: 16em;
-	position: relative;
-	left: 0;
-	top: 3vw;
-	text-align: center;
+ #dash-greeting-wrapper{
+     font-family: 'Raleway', sans-serif;
+     width: 100%;
+     height: 14em;
+     position: relative;
+     left: 0;
+     top: 0;
+     text-align: center;
 }
-#dash-hello-greeting{
-	font-weight: bolder;
-	font-size: 3.5em;
+ #dash-hello-greeting{
+     font-weight: bolder;
+     font-size: 3.5em;
 }
-#dash-greeting{
-	font-size: 1.2em;
-	margin: .5em;
+ #dash-greeting{
+     font-size: 1.2em;
+     margin: .5em;
 }
-
 /*data text*/
-#dash-worth-wrapper{
-	position: relative;
-	top: 0em;
-	text-align: center;
-	font-family: 'Raleway', sans-serif;
-	font-size: 2.5em;
-	width: 100%;
+ #dash-worth-wrapper{
+     position: relative;
+     top: 0em;
+     text-align: center;
+     font-family: 'Raleway', sans-serif;
+     font-size: 2.5em;
+     width: 100%;
 }
-
-#dash-worth-wrapper p{
-	display: inline-block;
-	font-weight: bold;
+ #dash-worth-wrapper p{
+     display: inline-block;
+     font-weight: bold;
 }
-#user-worth{
-	font-family: 'PT Sans', sans-serif;
+ #user-worth{
+     font-family: 'PT Sans', sans-serif;
 }
 /*data charts*/
-#data-charts-wrapper{width: 100%;position: relative;height: 40vw;}
-#dash-doughnut{
-	width: 35vw!important;
-	height: 35vw!important;
-	position: absolute;
-	margin-top: 3em;
-	left: 1em;
-}
-#dash-line{
-	position: absolute;
-	right: 2.5vw;
-	width: 50vw!important;
-	height: 34vw!important;
-	margin-top: 3em;
-}
-
-/*settings stuff*/
-#settings-nav{
-	height: 5em;
-	background-color: #3b3b3b;
-	border-top: 1px solid #4a4747;
-}
-#settings-nav-items{
-	margin:0;
-	padding:0;
-	height: 100%;
-	text-align: center;
-	position: relative;
-}
-.settings-nav-li{
-	font-size: 2em;
-	color: snow;
-	cursor: pointer;
-	margin: .5em 2em;
-}
-.settings-nav-li:hover:not(.selected-settings-nav){
-	color:grey;
-}
-.selected-settings-nav{
-    border-bottom: 2px solid snow;
-    padding-bottom: 3px;
-    font-size: 2.5em;
-    margin: 0em 1.5em;
-}
-#settings-profile-btn{
-}
-#settings-pass-btn{
-
-}
-#settings-wallet-btn{
-
-}
-#settings-notification-btn{
-
-}
-#settings-advanced-btn{
-	
-}
-.settings-items-wrappers{
-	width:100%;
-	height:100%;
-	background-color:transparent;
-	position:relative;
-}
-#profile-settings-wrapper{
-	display: none;
-}
-
-
-/*wallet page stuff*/
-#add-wallet-wrapper{
-
-}
-.add-wallet-label{
-	font-size:4em;
-	font-weight: inherit;
-	width: 100%;
-	text-align: center;
-	margin-top: 1.5em;
-}
-.wallet-form-wrapper{
-    width: 50vw;
-    height: 13vw;
+ #data-charts-wrapper{
+    width: 100%;
     position: relative;
-    left: 25vw;
+    height: 40vw;
+    margin-bottom: 2em;
 }
-.wallet-input{
-	color:grey;
-	height:1em!important;
-	font-size: 2em!important;
+ #dash-doughnut{
+     width: 34vw!important;
+     height: 33vw!important;
+     position: absolute;
+     margin-top: 5em;
+     left: 4em;
 }
-#wallet-submit{
-	font-size: 1.2em;
-	font-weight: 400;
-	height: 2em;
-	width: 20vw;
-	position: relative;
-	float: right;
-	display: inline-block;
-	margin-top: 0.5em;
-	background-color: #675e5e!important;
+ #dash-line{
+     position: absolute;
+     right: 2.5vw;
+     width: 50vw!important;
+     height: 34vw!important;
+     margin-top: 3em;
 }
-.dropdown-wrapper{
-	position: relative;
-	display: inline-block;
+/*settings stuff*/
+ #settings-nav{
+     height: 5em;
+     background-color: #272727;
 }
-.dropdown-item{
-	display: block;
-	text-align: center;
-	font-size: 1.2em;
-	padding: 0.5em;
-	font-weight: 300;
+ #settings-nav-items{
+     margin:0;
+     padding:0;
+     height: 100%;
+     text-align: center;
+     position: relative;
 }
-#wallet-dropdown-btn{
-	width:13vw;
-	font-size: 1.2em;
-	background-color: #675e5e!important;
+ .settings-nav-li{
+     font-size: 2em;
+     color: snow;
+     cursor: pointer;
+     margin: .5em 2em;
 }
-#selectedWalletDropdown:before{
-	content: "✓ ";
+ .settings-nav-li:hover:not(.selected-settings-nav){
+     color:grey;
 }
-.user-wallets-label{
-	font-size:4em;
-	font-weight: inherit;
-	width: 100%;
-	text-align: center;
-	margin-top: 1.5em;
+ .selected-settings-nav{
+     border-bottom: 2px solid snow;
+     padding-bottom: 3px;
+     font-size: 2.5em;
+     margin: 0em 1.5em;
 }
-
-#displayed-wallets-wrapper{text-align: center;width: 56vw;position: relative;left: 22vw;}
-.wallet-address-item{margin-top: 1.5em;}
-.wallet-address-delete-btn{
-	margin-left: 16vw;
+ #settings-profile-btn{
+}
+ #settings-pass-btn{
+}
+ #settings-wallet-btn{
+}
+ #settings-notification-btn{
+}
+ #settings-advanced-btn{
+}
+ .settings-items-wrappers{
+     width:100%;
+     height:100%;
+     background-color:transparent;
+     position:relative;
+}
+ #profile-settings-wrapper{
+     display: none;
+}
+/*wallet page stuff*/
+ #add-wallet-wrapper{
+}
+ .add-wallet-label{
+     font-size:4em;
+     font-weight: inherit;
+     width: 100%;
+     text-align: center;
+     margin-top: 1.5em;
+}
+ .wallet-form-wrapper{
+     width: 50vw;
+     height: 13vw;
+     position: relative;
+     left: 25vw;
+}
+ .wallet-input{
+     color:grey;
+     height:1em!important;
+     font-size: 2em!important;
+}
+ #wallet-submit{
+     font-size: 1.2em;
+     font-weight: 400;
+     height: 2em;
+     width: 20vw;
+     position: relative;
+     float: right;
+     display: inline-block;
+     margin-top: 0.5em;
+     background-color: #675e5e!important;
+}
+ .dropdown-wrapper{
+     position: relative;
+     display: inline-block;
+}
+ .dropdown-item{
+     display: block;
+     text-align: center;
+     font-size: 1.2em;
+     padding: 0.5em;
+     font-weight: 300;
+}
+ #wallet-dropdown-btn{
+     width:13vw;
+     font-size: 1.2em;
+     background-color: #675e5e!important;
+}
+ #selectedWalletDropdown:before{
+     content: "✓ ";
+}
+ .user-wallets-label{
+     font-size:4em;
+     font-weight: inherit;
+     width: 100%;
+     text-align: center;
+     margin-top: 1.5em;
+}
+ #displayed-wallets-wrapper{
+    text-align: center;
+    width: 56vw;
+    position: relative;
+    left: 22vw;
+}
+ .wallet-address-item{
+    margin-top: 1.5em;
+}
+ .wallet-address-delete-btn{
+     margin-left: 16vw;
+}
+.list-group li{
+	width:100% !important;
 }
 /*end wallet page*/
-
+/*nav dropdown*/
+ .nav-ul{
+     padding:0;
+}
+ #nav-settings-btn{
+    width: 100%;
+    text-align: center;
+    font-size: 1.7em;
+    background: #3b3b3b;
+    color: snow;
+    border-bottom: .5px solid #8f8d8db8;
+    border-radius: 1px;
+    padding: .75em;
+    user-select: none;
+    cursor: pointer;
+}
+/*end nav dropdown*/

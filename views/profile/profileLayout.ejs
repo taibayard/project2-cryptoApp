@@ -20,12 +20,33 @@
     <!--User view-->
 	<div id="rendered-view">
 			<!--nav for logged in users -->
-		<nav>
+<!-- 		<nav>
 			<ul>
 				<li id = "nav-tools-btn" class="hamburger-icon"></li>
 				<li id="nav-name"><%=user.username%></li>
 				<li id="nav-msg-btn" class="glyphicon glyphicon-comment"></li>
 			</ul>
+		</nav>
+		<div id="nav-sidebar-wrapper">
+			<ul class="nav-ul">
+				<li id="nav-settings-btn">Settings</li>
+			</ul>
+		</div> -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-elegant">
+			<div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+                    <ul class="navbar-nav ml-auto navbar-ul">
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light" href="/profile/settings"><i class="glyphicon glyphicon-cog"></i> Settings</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> Profile </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
+                                <a class="dropdown-item waves-effect waves-light" href="/profile/dash">My dash</a>
+                                <a class="dropdown-item waves-effect waves-light" href="#">Log out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
 		</nav>
 		<!--this script needs to be rendered in the body-->
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.4/js/mdb.min.js"></script>
