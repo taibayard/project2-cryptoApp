@@ -2,7 +2,7 @@ require('dotenv').config();
 var express = require('express');
 var passport = require('../config/passportConfig');
 var db = require('../models');
-
+var nodemailer = require('nodemailer');
 //middleware
 var isLoggedIn = require('../middleware/isLoggedIn');
 
@@ -31,7 +31,6 @@ let ethplorer = {
         });
     },
     convertBalance: function(bal, dec) {
-        //test code
         bal = bal.toString();
         if (bal.indexOf("e") != -1) {
             // handles numbers like 3.3e+37 or 2e+28
@@ -129,8 +128,8 @@ router.get('/dash', isLoggedIn, function(req, res) {
                         updateCoinValues();
                     }).catch(function(err) {
                         console.log("Error pulling coins from marketplace");
-                    })
-                } else {
+                    });
+                }else{
                     //coindata is in db
                     db.coindata.findOne({
                         where: {
@@ -336,7 +335,33 @@ router.post("/settings/wallet", isLoggedIn, function(req, res) {
             break;
     }
 });
+//post for adding a phone (notifications)
+router.post("/settings/addphone/:carrier",function(req,res){
+    let carrier = req.params.carrier;
+    let emailAddress = userData.phone + "@" + carrier
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'project2cryptoapp@gmail.com',
+            pass: process.env.GMAIL_PASS
+        }
+    });
 
+    var mailOptions = {
+        from: 'test@gmail.com',
+        to: emailAddress,
+        text: 'That was easy!'
+    };
+
+    transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+    res.send();
+});
 /*DELETE ROUTES*/
 
 //deletes wallet from database

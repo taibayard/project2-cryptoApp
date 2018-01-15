@@ -1,5 +1,4 @@
 <body>
-
 <nav id="settings-nav">
 	<ul id="settings-nav-items">
 		<li class="settings-nav-li selected-settings-nav" id="settings-profile-btn">Profile</li>
@@ -35,7 +34,7 @@
 		        <!--/Dropdown primary-->
 			</div>
 			<input id="walletTypeInput" type="hidden" name="type" value="">
-			<input type="submit" value="Add Wallet" id="wallet-submit" class="form-control btn btn-primary">
+			<input type="submit" value="Add Wallet" id="wallet-submit" class="form-control btn btn-primary settings-submit">
 		</form>
 		<div id="displayed-wallets-wrapper">
 			<% if(wallet.length > 0 ){%>
@@ -52,6 +51,38 @@
 				</ul>
 			<%} %>
 		</div>
+</div>
+<div class="settings-items-wrappers" id="notifications-settings-wrapper">
+	<div id="add-notifications-wrapper">
+		<div class="add-notifications-head">
+			<h1>Verify Phone Number</h1>
+		</div>
+		<form class="send-code-form" method="POST" action="settings/sendcode">
+			<div class="dropdown-wrapper">
+				<!--Dropdown primary-->
+		        <div class="dropdown" >
+
+		            <!--Trigger-->
+		            <button class="btn btn-primary dropdown-toggle" type="button" id="carrier-dropdown-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carrier Type</button>
+		            <!--Menu-->
+		            <div class="dropdown-menu dropdown-primary carrier-type-dropdown">
+		            </div>
+		        </div>
+		        <!--/Dropdown primary-->
+			</div>
+			<input id="carrierTypeInput" type="hidden" name="carrier" value="">
+			<input type="submit" value="Send Code" id="text-submit" class="form-control btn btn-primary settings-submit">
+		</form>
+		<form class="add-phone-form" method="POST" action="settings/addphone">
+			<div class="form-group" id="add-phone-input-wrapper">
+				<input type="text" name="code" class="form-control" id="add-phone-input" minlength="5" maxlength="5">
+			</div>
+			<input type="submit" value="Send Code" id="code-submit" class="form-control btn btn-primary settings-submit">
+		</form>
+	</div>
+	<div id="update-notifications-wrapper">
+		
+	</div>
 </div>
 <!--Run at end-->
 <script type="text/javascript">

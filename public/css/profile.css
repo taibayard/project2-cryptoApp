@@ -22,6 +22,7 @@ li{
  li.nav-item.dropdown.open .dropdown-item{
 	width:100%;
 	color:black!important;
+	font-size: 1em;
 }
 
  #nav-tools-btn{
@@ -169,6 +170,7 @@ li{
      font-weight: inherit;
      width: 100%;
      text-align: center;
+     font-weight: 200;
      margin-top: 1.5em;
 }
  .wallet-form-wrapper{
@@ -182,7 +184,7 @@ li{
      height:1em!important;
      font-size: 2em!important;
 }
- #wallet-submit{
+ .settings-submit{
      font-size: 1.2em;
      font-weight: 400;
      height: 2em;
@@ -214,7 +216,7 @@ li{
 }
  .user-wallets-label{
      font-size:4em;
-     font-weight: inherit;
+     font-weight: 200;
      width: 100%;
      text-align: center;
      margin-top: 1.5em;
@@ -235,20 +237,71 @@ li{
 	width:100% !important;
 }
 /*end wallet page*/
-/*nav dropdown*/
- .nav-ul{
-     padding:0;
+
+/*notifications page*/
+#notifications-settings-wrapper{
+
 }
- #nav-settings-btn{
-    width: 100%;
-    text-align: center;
-    font-size: 1.7em;
-    background: #3b3b3b;
-    color: snow;
-    border-bottom: .5px solid #8f8d8db8;
-    border-radius: 1px;
-    padding: .75em;
-    user-select: none;
-    cursor: pointer;
+#add-notifications-wrapper{margin-top: 9em;}
+#update-notifications-wrapper{
+	display: none;
 }
-/*end nav dropdown*/
+/*adding notification stuff*/
+
+.add-notifications-head{
+	width:100%;
+	text-align: center;
+	margin-top: auto;
+	a;
+}
+.add-notifications-head h1{
+	font-size: 5.5em;
+	font-weight: 200;
+}
+.add-phone-form{
+	width: 50vw;
+	position: relative;
+	left: 25vw;
+	margin-top: 3em;
+	display: none;
+}
+.send-code-form{
+	width: 50vw;
+	position: relative;
+	left: 25vw;
+	margin-top: 5em;
+}
+#add-phone-input{
+	text-align: center;
+	height: 100%;
+	font-size: 6em;
+	color:lightseagreen;
+	font-weight: 200;
+	margin-top: 1em;
+}
+.carrier-dropdown-item{
+	display: inline-block;
+	width: 13vw;
+	font-size: 1em;
+}
+.carrier-type-dropdown{
+    width: 53vw;
+}
+#carrier-dropdown-btn{
+	 width: 21vw;
+	 font-size: 2em;
+	 margin-top: 0.5em;
+	 background-color: #4B515D!important;
+}
+#text-submit{
+	font-size: 2em;
+	background-color: #3E4551!important;
+}
+/*end adding phone stuff*/
+
+
+
+
+
+
+/*end notifications page*/
