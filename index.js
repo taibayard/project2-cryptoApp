@@ -37,7 +37,11 @@ app.get('/', isLoggedIn, function(req, res) {
 app.get('/privacy', function(req, res) {
     res.render("privacy");
 });
-
+app.get("/logout",function(req,res){
+    req.logout();
+    req.flash("success", "Successfully logged out");
+    res.redirect("/");
+})
 app.use('/auth', require('./controllers/auth'));
 app.use('/profile', require('./controllers/profile'));
 var server = app.listen(process.env.PORT || 3000);

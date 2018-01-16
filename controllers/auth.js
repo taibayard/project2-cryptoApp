@@ -47,8 +47,4 @@ router.post('/signup', function(req, res, next) {
     });
 });
 
-router.get('/logout', function(req, res) {
-    res.send("router get logout route works");
-});
-
 module.exports = router;
