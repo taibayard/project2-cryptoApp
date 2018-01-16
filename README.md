@@ -9,10 +9,10 @@ Displays data relating to crypto currencies. Alerts users about changes in crypt
 - [✓] Ethereum based wallets are supported
 - [] Bitcoin based wallets are supported
 4. [✓] User is able to verify their phone number and recieve texts
-- [] User's carrier is saved in database for future use
+- [✓] User's carrier is saved in database for future use
 - [] User can recieve alerts based on preferences (ex. How often they 
 	should be alerted, and margin of change that triggers alert)
-- [] Upon phone verification their profile in the database saves that they've verified their phone
+- [✓] Upon phone verification their profile in the database saves that they've verified their phone
 5. [] User can update profile information like first name / last name 
 6. [] User can change password
 7. [] User can verify email
