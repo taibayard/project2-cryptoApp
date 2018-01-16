@@ -93,7 +93,8 @@ function selectedNavItem(e) {
                 url: "/profile/settings/sendcode/" + address,
                 method: "POST"
             }).then(function(data){
-                location.reload(); 
+               document.getElementsByClassName("send-code-form")[0].style.display = "none";
+                document.getElementsByClassName("add-phone-form")[0].style.display = "block";
             });
         }else{
             console.warn("Unsupported option was selected");

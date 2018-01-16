@@ -244,6 +244,7 @@ router.get('/dash', isLoggedIn, function(req, res) {
 });
 //gets users settings data
 router.get("/settings", isLoggedIn, function(req, res) {
+    userData = res.locals.currentUser.dataValues;
     db.wallet.findAll({
         where: {
             userId: userData.id
