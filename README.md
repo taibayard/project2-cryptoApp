@@ -6,13 +6,13 @@ Displays data relating to crypto currencies. Alerts users about changes in crypt
 1. [✓] Users are able to create accounts and login
 2. [✓] Dashboard displays graphs with data pulled from realtime API
 3. [✓] User is able to add wallets 
-	..1. [✓] Ethereum based wallets are supported
-	..2. [ ] Bitcoin based wallets are supported
+	⋅⋅* [✓] Ethereum based wallets are supported
+	⋅⋅* [ ] Bitcoin based wallets are supported
 4. [✓] User is able to verify their phone number and recieve texts
-	..1. [ ] User's carrier is saved in database for future use
-	..2. [ ] User can recieve alerts based on preferences (ex. How often they 
+	⋅⋅* [ ] User's carrier is saved in database for future use
+	⋅⋅* [ ] User can recieve alerts based on preferences (ex. How often they 
 	should be alerted, and margin of change that triggers alert)
-	..3. [ ] Upon phone verification their profile in the database saves that they've verified their phone
+	⋅⋅* [ ] Upon phone verification their profile in the database saves that they've verified their phone
 5. [ ] User can update profile information like first name / last name 
 6. [ ] User can change password
 7. [ ] User can verify email
