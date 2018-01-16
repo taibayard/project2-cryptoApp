@@ -353,7 +353,8 @@ router.post("/settings/wallet", isLoggedIn, function(req, res) {
                 });
 
                 //going back to settings
-                res.redirect('/profile/settings');
+                res.send();
+                res.redirect("/profile/dash");
             }).catch(function(err) {
                 res.send("Error getting wallet");
             });
@@ -384,6 +385,18 @@ router.post("/settings/verifycode/:code",function(req,res){
         //set phone is verified to true in database
         //sending confirmation message for now to verify everything works
         sendMessage(userData.phone+"@"+carrier,"CODE ENTERED WAS CORRECT");
+        db.user.findOne({
+            where:{
+                id:userData.id
+            }
+        }).then(function(user){
+            user.updateAttributes({
+                carrier:carrier,
+                phoneverified:"true"
+            })
+        }).catch(function(err){
+            console.log("error matching user in verify code");
+        })
     }else{
         //handle invalid code entry
         sendMessage(userData.phone+"@"+carrier,"CODE ENTERED WAS INCORRECT");

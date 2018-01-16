@@ -41,7 +41,8 @@ module.exports = (sequelize, DataTypes) => {
     lastname: DataTypes.STRING,
     dob: DataTypes.DATE,
     bio: DataTypes.STRING,
-    phoneverified: DataTypes.STRING
+    phoneverified: DataTypes.STRING,
+    carrier: DataTypes.STRING
   }, {
     hooks: {
       beforeCreate: function(pendingUser, options){

@@ -35,6 +35,9 @@ module.exports = {
       phoneverified:{
         type: Sequelize.STRING
       },
+      carrier:{
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
