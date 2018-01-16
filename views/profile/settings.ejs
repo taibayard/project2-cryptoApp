@@ -73,12 +73,18 @@
 			<input id="carrierTypeInput" type="hidden" name="carrier" value="">
 			<input type="submit" value="Send Code" id="text-submit" class="form-control btn btn-primary settings-submit">
 		</form>
-		<form class="add-phone-form" method="POST" action="settings/addphone">
+		<%if(code !="0000"){%>
+		<form style="display:block" class="add-phone-form" method="POST" action="settings/verifycode">
 			<div class="form-group" id="add-phone-input-wrapper">
 				<input type="text" name="code" class="form-control" id="add-phone-input" minlength="5" maxlength="5">
 			</div>
-			<input type="submit" value="Send Code" id="code-submit" class="form-control btn btn-primary settings-submit">
+			<input type="submit" value="Verify" id="code-submit" class="form-control btn btn-primary settings-submit">
 		</form>
+		<script type="text/javascript">
+				let code = <%-JSON.stringify(code)%>
+				document.getElementsByClassName("send-code-form")[0].style.display = "none";
+		</script>
+		<%}%>
 	</div>
 	<div id="update-notifications-wrapper">
 		

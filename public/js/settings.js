@@ -90,8 +90,10 @@ function selectedNavItem(e) {
         let address = document.getElementById("carrierTypeInput").value;
         if((address.indexOf("↵")&&address.indexOf("Not")&&address.indexOf("Discontinued") ) === -1){
             $.ajax({
-                url: "/profile/settings/addphone/" + address,
+                url: "/profile/settings/sendcode/" + address,
                 method: "POST"
+            }).then(function(data){
+                location.reload(); 
             });
         }else{
             console.warn("Unsupported option was selected");
@@ -99,7 +101,20 @@ function selectedNavItem(e) {
 
     });
 })();
+$("#code-submit").click(function(e) {
+    e.preventDefault();
+    let inputCode = document.getElementById("add-phone-input").value;
+    if (inputCode.length===4) {
+        $.ajax({
+            url: "/profile/settings/verifycode/" + inputCode,
+            method: "POST"
+        }).then(function(data) {
+            location.reload();
+        });
+    } else {
+        console.warn("Invalid code length");
+    }
 
-
+});
 
 //handle submit/verify button

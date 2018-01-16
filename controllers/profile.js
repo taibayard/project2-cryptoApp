@@ -5,7 +5,7 @@ var db = require('../models');
 var nodemailer = require('nodemailer');
 //middleware
 var isLoggedIn = require('../middleware/isLoggedIn');
-
+let carrier = null;
 var router = express.Router();
 var request = require("request");
                         // 1800000 = 30minutes
@@ -14,6 +14,17 @@ var coindataUpdateTimer = (1800000)/2; //handles when to update the coindata tab
 var userData = null;
 //setting custom view instead of ejs layout
 var profileView = 'profile/profileLayout.ejs';
+//holds data containing the verification code
+var verificationCode = "0000";
+var generateCode = function(){
+    let first = (Math.floor((Math.random() * 9) + 1)).toString();
+    let second = (Math.floor((Math.random() * 9) + 1)).toString();
+    let third = (Math.floor((Math.random() * 9) + 1)).toString();
+    let fourth = (Math.floor((Math.random() * 9) + 1)).toString();
+    let code = first + second + third + fourth;
+
+    return code;
+}
 //ethplorer api
 let ethplorer = {
     baseUrl: "https://api.ethplorer.io/",
@@ -77,7 +88,29 @@ var coinmarket = {
         });
     }
 }
+function sendMessage(address,code){
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.GMAIL_USER,
+            pass: process.env.GMAIL_PASS
+        }
+    });
 
+    var mailOptions = {
+        from:"test@test.com",
+        to: address,
+        text: 'Your cryptoapp verification code is : ' + code
+    };
+
+    transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+}
 function updateCoinValues() {
     db.coin.findAll().then(function(coins) {
         //setting all coins values to data from coindata
@@ -219,7 +252,8 @@ router.get("/settings", isLoggedIn, function(req, res) {
         res.render('profile/settings', {
             layout: profileView,
             user: userData,
-            wallet: wallets
+            wallet: wallets,
+            code : verificationCode
         })
     }).catch(function(err) {
         //no wallets exist?
@@ -336,30 +370,24 @@ router.post("/settings/wallet", isLoggedIn, function(req, res) {
     }
 });
 //post for adding a phone (notifications)
-router.post("/settings/addphone/:carrier",function(req,res){
-    let carrier = req.params.carrier;
-    let emailAddress = userData.phone + "@" + carrier
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'project2cryptoapp@gmail.com',
-            pass: process.env.GMAIL_PASS
-        }
-    });
-
-    var mailOptions = {
-        from: 'test@gmail.com',
-        to: emailAddress,
-        text: 'That was easy!'
-    };
-
-    transporter.sendMail(mailOptions, function(error, info) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
+router.post("/settings/sendcode/:carrier",function(req,res){
+    carrier = req.params.carrier;
+    let emailAddress = userData.phone + "@" + carrier;
+    verificationCode = generateCode();
+    sendMessage(emailAddress,verificationCode);
+    res.send();
+});
+//post for verifying code (notifications)
+router.post("/settings/verifycode/:code",function(req,res){
+    console.log(carrier);
+    if(req.params.code === verificationCode){
+        //set phone is verified to true in database
+        //sending confirmation message for now to verify everything works
+        sendMessage(userData.phone+"@"+carrier,"CODE ENTERED WAS CORRECT");
+    }else{
+        //handle invalid code entry
+        sendMessage(userData.phone+"@"+carrier,"CODE ENTERED WAS INCORRECT");
+    }
     res.send();
 });
 /*DELETE ROUTES*/
