@@ -36,7 +36,7 @@ let ethplorer = {
                 if (parsedBody.ETH && ( parsedBody.ETH.balance >= 0 || parsedBody.tokens)) {
                     resolve(parsedBody);
                 } else {
-                    resolve(error);
+                    reject(error);
                 }
             })
         });
