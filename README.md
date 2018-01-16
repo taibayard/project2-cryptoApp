@@ -18,12 +18,12 @@ Displays data relating to crypto currencies. Alerts users about changes in crypt
 7. [ ] User can verify email
 8. [ ] User can 'follow' other wallets
 
-#Database structure
+# Database structure
 Inline-style: 
 ![alt text](https://i.imgur.com/GWnkkxp.png "Dataflow graph")
 
 
-#Technologies Used
+# Technologies Used
 1. Javascript / Jquery
 2. HTML
 3. CSS
