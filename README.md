@@ -4,13 +4,13 @@ Displays data relating to crypto currencies. Alerts users about changes in crypt
 # Project Preview
 
 ## Logged in users dash
-<img src="https://i.imgur.com/pJgqhZL.png" width="250px" height="250px">
+<img src="https://i.imgur.com/pJgqhZL.png" width="500px" height="500px">
 
 ## add wallet page
-<img src="https://i.imgur.com/Lq1Qqq7.png" width="250px" height="250px">
+<img src="https://i.imgur.com/Lq1Qqq7.png" width="500px" height="500px">
 
 ## Users dash without wallets
-<img src="https://i.imgur.com/vAGFlAL.png" width="250px" height="250px">
+<img src="https://i.imgur.com/vAGFlAL.png" width="500px" height="500px">
 
 
 # Some goals for this project
