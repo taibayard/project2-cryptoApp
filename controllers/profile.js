@@ -354,7 +354,6 @@ router.post("/settings/wallet", isLoggedIn, function(req, res) {
                 });
 
                 //going back to settings
-                res.send();
                 res.redirect("/profile/dash");
             }).catch(function(err) {
                 res.send("Error getting wallet");
