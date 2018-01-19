@@ -1,6 +1,17 @@
 # Crypto App
 Displays data relating to crypto currencies. Alerts users about changes in crypto currency prices based on user preferences.
 
+# Project Preview
+
+## Logged in users dash
+<img src="https://i.imgur.com/pJgqhZL.png" width="250px" height="250px">
+
+## add wallet page
+<img src="https://i.imgur.com/Lq1Qqq7.png" width="250px" height="250px">
+
+## Users dash without wallets
+<img src="https://i.imgur.com/vAGFlAL.png" width="250px" height="250px">
+
 
 # Some goals for this project
 
@@ -32,4 +43,4 @@ Displays data relating to crypto currencies. Alerts users about changes in crypt
 6. Boostrap /  MDBoostrap
 
 # Links
-<a href="blank" target="_blank">Live Site</a>|<a href="https://trello.com/b/4OQcMTO5/project-2" target="_blank">Trello</a>
+<a href="https://cryptocurrencyalert.herokuapp.com" target="_blank">Live Site</a>|<a href="https://trello.com/b/4OQcMTO5/project-2" target="_blank">Trello</a>
