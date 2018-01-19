@@ -42,5 +42,8 @@ Displays data relating to crypto currencies. Alerts users about changes in crypt
 5. EJS
 6. Boostrap /  MDBoostrap
 
+# Note
+ If you do not have a wallet address to test this app please use this one i pulled off of etherscan.io : 0x74389bca806df4276c0f1927fda45154e4556922 
+ and select ETH or TOKEN as your wallet type.
 # Links
 <a href="https://cryptocurrencyalert.herokuapp.com" target="_blank">Live Site</a>|<a href="https://trello.com/b/4OQcMTO5/project-2" target="_blank">Trello</a>
