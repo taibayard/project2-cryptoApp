@@ -1,8 +1,15 @@
 {
   "name": "project2-cryptoApp",
   "version": "1.0.0",
-  "description": "Displays data relating to crypto currencies. Alerts users about changes in crypto currency prices based on user preferences.",
+  "description": "",
   "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "async": "^2.6.0",
     "bcrypt": "^1.0.3",
@@ -21,21 +28,5 @@
     "request": "^2.83.0",
     "sequelize": "^4.29.0",
     "sequelize-cli": "^3.2.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/taibayard/project2-cryptoApp.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/taibayard/project2-cryptoApp/issues"
-  },
-  "homepage": "https://github.com/taibayard/project2-cryptoApp#readme"
+  }
 }
