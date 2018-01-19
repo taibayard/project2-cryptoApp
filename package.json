@@ -2,6 +2,9 @@
   "name": "project2-cryptoApp",
   "version": "1.0.0",
   "description": "Displays data relating to crypto currencies. Alerts users about changes in crypto currency prices based on user preferences.",
+  "scripts": {
+    "start": "node index.js"
+  },
   "main": "index.js",
   "dependencies": {
     "async": "^2.6.0",
@@ -19,7 +22,8 @@
     "pg": "^6.4.1",
     "pg-hstore": "^2.3.2",
     "request": "^2.83.0",
-    "sequelize": "^4.29.0"
+    "sequelize": "^4.29.0",
+    "sequelize-cli": "^3.2.0"
   },
   "devDependencies": {},
   "scripts": {
