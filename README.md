@@ -1,6 +1,7 @@
 # Crypto App
 Displays data relating to crypto currencies. Alerts users about changes in crypto currency prices based on user preferences.
 
+
 # Some goals for this project
 
 1. [✓] Users are able to create accounts and login
