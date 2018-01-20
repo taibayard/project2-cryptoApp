@@ -242,19 +242,20 @@ li{
 #notifications-settings-wrapper{
 
 }
-#add-notifications-wrapper{margin-top: 9em;}
-#update-notifications-wrapper{
+#nonverified-notifications-wrapper{
+    margin-top: 9em;
+}
+#verified-notifications-wrapper{
 	display: none;
 }
 /*adding notification stuff*/
 
-.add-notifications-head{
+.nonverified-notifications-head{
 	width:100%;
 	text-align: center;
 	margin-top: auto;
-	a;
 }
-.add-notifications-head h1{
+.nonverified-notifications-head h1{
 	font-size: 5.5em;
 	font-weight: 200;
 }

@@ -20,10 +20,10 @@
 	<%-delete user.password;%>
 	var user = <%-JSON.stringify(user)%>
 	if(user.phoneverified === "true"){
-		document.getElementById("add-notifications-wrapper").style.display = "none";
-		document.getElementById("update-notifications-wrapper").style.display = "block";
+		document.getElementById("nonverified-notifications-wrapper").style.display = "none";
+		document.getElementById("verified-notifications-wrapper").style.display = "block";
 	}else{
-		document.getElementById("add-notifications-wrapper").style.display="block";
+		document.getElementById("nonverified-notifications-wrapper").style.display="block";
 	}
 </script>
 <script type="text/javascript" src="/js/settings.js"></script>
