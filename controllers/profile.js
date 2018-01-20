@@ -250,7 +250,7 @@ router.get("/settings", isLoggedIn, function(req, res) {
             userId: userData.id
         }
     }).then(function(wallets) {
-        res.render('profile/settings', {
+        res.render('profile/settings/main', {
             layout: profileView,
             user: userData,
             wallet: wallets,

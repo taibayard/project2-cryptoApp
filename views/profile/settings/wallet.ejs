@@ -1,0 +1,42 @@
+<div class="settings-items-wrappers" id="add-wallet-wrapper">
+		<label class="add-wallet-label">Add Wallet</label>
+		<form class ="wallet-form-wrapper" method="POST" action="settings/wallet">
+			<div class="wallet-form form-group">
+				<input type="text" name="wallet" placeholder="Wallet Address" class="form-control wallet-input"  autocomplete="off">
+			</div>
+			<div class="dropdown-wrapper">
+				<!--Dropdown primary-->
+		        <div class="dropdown">
+
+		            <!--Trigger-->
+		            <button class="btn btn-primary dropdown-toggle" type="button" id ="wallet-dropdown-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Wallet Type</button>
+		            
+
+		            <!--Menu-->
+		            <div class="dropdown-menu dropdown-primary">
+		                <a class="wallet-dropdown-item dropdown-item">Bitcoin</a>
+		                <a class="wallet-dropdown-item dropdown-item">Ethereum</a>
+		                <a class="wallet-dropdown-item dropdown-item">Token</a>
+		            </div>
+		        </div>
+		        <!--/Dropdown primary-->
+			</div>
+			<input id="walletTypeInput" type="hidden" name="type" value="">
+			<input type="submit" value="Add Wallet" id="wallet-submit" class="form-control btn btn-primary settings-submit">
+		</form>
+		<div id="displayed-wallets-wrapper">
+			<% if(wallet.length > 0 ){%>
+			<label class="user-wallets-label">Your Wallets</label>
+			<ul class="list-group">
+				<%wallet.forEach(function(item){%>
+					<li class="list-group-item wallet-address-item">
+						<a><%=item.address%></a>
+						<a class ="btn btn-danger delete-link wallet-address-delete-btn">
+							Delete
+						</a>
+					</li>
+				<%});%>
+				</ul>
+			<%} %>
+		</div>
+</div>

@@ -1,0 +1,30 @@
+<body>
+<nav id="settings-nav">
+	<ul id="settings-nav-items">
+		<li class="settings-nav-li selected-settings-nav" id="settings-profile-btn">Profile</li>
+		<li class="settings-nav-li" id="settings-pass-btn">Password</li>
+		<li class="settings-nav-li" id="settings-wallet-btn">Wallets</li>
+		<li class="settings-nav-li" id="settings-notification-btn">Notifications</li>
+		<li class="settings-nav-li" id="settings-advanced-btn">Advanced</li>
+	</ul>
+</nav>
+<div class="settings-items-wrappers active-settings-item" id="profile-settings-wrapper">
+</div>
+<!-- Adding wallet elements to page -->
+<% include wallet %>
+
+<!-- Adding notification elements to page -->
+<% include notifications/main %>
+<!--Run at end-->
+<script type="text/javascript">
+	<%-delete user.password;%>
+	var user = <%-JSON.stringify(user)%>
+	if(user.phoneverified === "true"){
+		document.getElementById("add-notifications-wrapper").style.display = "none";
+		document.getElementById("update-notifications-wrapper").style.display = "block";
+	}else{
+		document.getElementById("add-notifications-wrapper").style.display="block";
+	}
+</script>
+<script type="text/javascript" src="/js/settings.js"></script>
+</body>

@@ -29,6 +29,7 @@ Displays data relating to crypto currencies. Alerts users about changes in crypt
 6. [] User can change password
 7. [] User can verify email
 8. [] User can 'follow' other wallets
+9. [] User can search website for current coin values
 
 # Database structure
 ![alt text](https://i.imgur.com/GWnkkxp.png "Dataflow graph")
