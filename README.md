@@ -37,13 +37,14 @@ Displays data relating to crypto currencies. Alerts users about changes in crypt
 
 # Technologies Used
 1. Javascript / Jquery
-2. HTML
-3. CSS
+2. PostgreSQL
+3. Sequelize
 4. NodeJS
 5. EJS
 6. Express
 7. Boostrap /  MDBoostrap
-
+8. HTML
+9. CSS
 # Note
  If you do not have a wallet address to test this app please use this one i pulled off of etherscan.io : 0x74389bca806df4276c0f1927fda45154e4556922 
  and select ETH or TOKEN as your wallet type.

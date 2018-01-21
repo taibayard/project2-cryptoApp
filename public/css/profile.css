@@ -301,7 +301,9 @@ li{
 /*end adding phone stuff*/
 
 /*Saved notifications stuff*/
-
+.saved-alerts-wrapper{
+    text-align: center;
+}
 
 
 
