@@ -234,7 +234,7 @@ li.nav-item.dropdown.open .dropdown-item{
     margin-left: 16vw;
 }
 .list-group li{
-   width:100% !important;
+   width: 96.5% !important;
 }
 /*end wallet page*/
 
@@ -343,8 +343,11 @@ li.nav-item.dropdown.open .dropdown-item{
 /*Create notification stuff*/
 .create-alert-wrapper{
     display:none;
+    text-align: center;
 }
-
+.create-alert-type-wrapper{
+    
+}
 
 
 

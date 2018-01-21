@@ -17,13 +17,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     }
-  }, {
-    classMethods: {
-      associate: function(models) {
-        models.wallet.belongsTo(models.user);
-        models.wallet.hasMany(models.coin);
-      }
-    }
   });
+  wallet.associate = function (models) {
+    models.wallet.belongsTo(models.user);
+    models.wallet.hasMany(models.coin);
+  };
   return wallet;
 };

@@ -248,17 +248,21 @@ router.get("/settings", isLoggedIn, function(req, res) {
     db.wallet.findAll({
         where: {
             userId: userData.id
-        }
+        },
+        include: [
+            { model: db.coin}
+        ]
     }).then(function(wallets) {
-        res.render('profile/settings/main', {
-            layout: profileView,
-            user: userData,
-            wallet: wallets,
-            code : verificationCode
-        })
+        // res.render('profile/settings/main', {
+        //     layout: profileView,
+        //     user: userData,
+        //     wallet: wallets,
+        //     code : verificationCode
+        // })
+        res.send(wallets);
     }).catch(function(err) {
         //no wallets exist?
-        res.send("error finding existing wallets");
+        res.send(err);
     })
 })
 

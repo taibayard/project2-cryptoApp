@@ -5,12 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     owned: DataTypes.STRING,
     value: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-         models.coin.belongsTo(models.wallet);
-      }
-    }
   });
+  coin.associate = function (models) {
+    models.coin.belongsTo(models.wallet);
+  };
   return coin;
 };
