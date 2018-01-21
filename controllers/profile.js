@@ -253,13 +253,12 @@ router.get("/settings", isLoggedIn, function(req, res) {
             { model: db.coin}
         ]
     }).then(function(wallets) {
-        // res.render('profile/settings/main', {
-        //     layout: profileView,
-        //     user: userData,
-        //     wallet: wallets,
-        //     code : verificationCode
-        // })
-        res.send(wallets);
+        res.render('profile/settings/main', {
+            layout: profileView,
+            user: userData,
+            wallet: wallets,
+            code : verificationCode
+        })
     }).catch(function(err) {
         //no wallets exist?
         res.send(err);

@@ -1,5 +1,59 @@
 <div class="create-alert-wrapper">
     <div class="create-alert-type-wrapper">
-        
+        <h1 class="alert-type-label">Type : </h1> 
+        <div class="alert-type-searchbox">
+            <input id="alert-type-search" type="text" placeholder="Search by wallet or currency" onkeyup="searchChanged(this.value)">
+            <div id="alert-type-search-results-wrapper">
+                <ul id="alert-search-ul">
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
+<script type="text/javascript">
+    let walletObj = <%- JSON.stringify(wallet) %>
+
+    let walletData ={
+        walletNames:[],
+        walletValues:[]
+    }
+    let coinData = {
+        coinNames:[],
+        coinValues:[]
+    }
+    walletObj.forEach((item) => {
+        walletData.walletNames.push(item.address.toUpperCase());
+        walletData.walletValues.push(item.value);
+        item.coins.forEach((coins) => {
+            coinData.coinNames.push(coins.name)
+            coinData.coinValues.push(coins.value);
+        });
+    });
+    function addSearchItems(e){
+        document.getElementById("alert-search-ul").innerHTML = "";
+        let liEl = [];
+        e.forEach((item)=>{
+            let li = document.createElement("li");
+            li.setAttribute("class","alert-search-item");
+            li.setAttribute("itemType",item.type);
+            li.setAttribute("itemVal",item.val);
+            li.innerText= item.name;
+            document.getElementById("alert-search-ul").appendChild(li);
+        });
+    }
+    function searchChanged(query){
+        query=query.toUpperCase();
+        const searchResults = [];
+        coinData.coinNames.some(item =>{
+            if(item.indexOf(query)!==-1){
+                searchResults.push({name:item,val:coinData.coinValues[coinData.coinNames.indexOf(item)],type:"currency"});
+            }
+        });
+        walletData.walletNames.some(item =>{
+            if(item.indexOf(query)!==-1){
+                searchResults.push({name:item,val:coinData.coinValues[coinData.coinNames.indexOf(item)],type:"wallet"});
+            }
+        });
+        addSearchItems(searchResults);
+    }
+</script>
