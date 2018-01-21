@@ -340,7 +340,18 @@ li.nav-item.dropdown.open .dropdown-item{
 
 /*end saved notifications stuff */
 
+/*Create notification stuff*/
+.create-alert-wrapper{
+    display:none;
+}
 
+
+
+
+
+
+
+/*End create notification stuff*/
 
 
 /*end notifications page*/

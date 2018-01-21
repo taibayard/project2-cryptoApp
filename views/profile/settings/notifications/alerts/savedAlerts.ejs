@@ -19,11 +19,26 @@
       </ul>
    </div>
 </div>
+
 <script type="text/javascript">
     (function(){
-        $("#saved-alerts-addbtn").click((e)=>{
-            $(".saved-alerts-wrapper").hide();
-            $(".create-alerts-wrapper").show();
-        })
+        function clickEvents(){
+            //add new alert btn
+            $("#saved-alerts-addbtn").click((e)=>{
+                $(".saved-alerts-wrapper").hide();
+                $(".create-alert-wrapper").show();
+            });
+
+            //update alert btn
+            $("update-alert-link").click((e)=>{
+                console.log("Update alert");
+            });
+
+            //delete alert btn
+            $("delete-alert-link").click((e)=>{
+                console.log("Delete alert");
+            });
+        }
+        clickEvents();
     })();
 </script>
