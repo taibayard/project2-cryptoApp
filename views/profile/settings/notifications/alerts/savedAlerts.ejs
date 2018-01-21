@@ -1,3 +1,29 @@
 <div class="saved-alerts-wrapper">
-    <h1>Phone verified display notification stuff here</h1>
+   <h1 class="saved-alerts-head">Saved Alerts</h1>
+   <div id="saved-alerts-list-wrapper">
+      <ul class="list-group">
+        <% if(alerts.length > 0 ){%>
+            <%alerts.forEach(function(item){%>
+                <li class="list-group-item saved-alerts-item">
+                    <a><%=item.type%> | <%=item.identifier %></a>
+                    <a class ="btn btn-warning update-alert-link saved-alerts-update-btn">
+                    Update
+                    </a>
+                    <a class ="btn btn-danger delete-alert-link saved-alerts-delete-btn">
+                    Delete
+                    </a>
+                </li>
+            <%});%>
+         <% }%>
+         <button class="btn btn-deep-orange" id="saved-alerts-addbtn">Add Alert</button>
+      </ul>
+   </div>
 </div>
+<script type="text/javascript">
+    (function(){
+        $("#saved-alerts-addbtn").click((e)=>{
+            $(".saved-alerts-wrapper").hide();
+            $(".create-alerts-wrapper").show();
+        })
+    })();
+</script>

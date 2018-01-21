@@ -1,240 +1,240 @@
 /*profile layout stuff*/
- #rendered-view{
-     height: 100%;
+#rendered-view{
+    height: 100%;
 }
 /*nav stuff*/
 nav{
-	border-radius: 0!important;
-	margin:0!important;
+   border-radius: 0!important;
+   margin:0!important;
 }
 .navbar-ul{
-	float:right;
+   float:right;
 }
 ul{
-     list-style-type: none;
+    list-style-type: none;
 }
 li{
-     display: inline-block;
-     width: 6em;
-     margin: 0 1em;
-     text-align: center;
+    display: inline-block;
+    width: 6em;
+    margin: 0 1em;
+    text-align: center;
 }
- li.nav-item.dropdown.open .dropdown-item{
-	width:100%;
-	color:black!important;
-	font-size: 1em;
+li.nav-item.dropdown.open .dropdown-item{
+   width:100%;
+   color:black!important;
+   font-size: 1em;
 }
 
- #nav-tools-btn{
-     width: 3em;
-     height: 3em;
-     margin-top: .4em;
-     margin-left: 1em;
+#nav-tools-btn{
+    width: 3em;
+    height: 3em;
+    margin-top: .4em;
+    margin-left: 1em;
 }
 }
- #nav-name{
-     color: snow;
-     font-size: 2.5em;
-     position: absolute;
-     user-select: none;
-     display: inline-block;
-     width: 86.5vw;
-     text-align: center;
+#nav-name{
+    color: snow;
+    font-size: 2.5em;
+    position: absolute;
+    user-select: none;
+    display: inline-block;
+    width: 86.5vw;
+    text-align: center;
 }
- #nav-msg-btn{
-     color: snow;
-     position: relative;
-     font-size: 2.7em;
-     top: 0.25em;
-     cursor: pointer;
-     float: right;
-     margin-right: 1.5em;
+#nav-msg-btn{
+    color: snow;
+    position: relative;
+    font-size: 2.7em;
+    top: 0.25em;
+    cursor: pointer;
+    float: right;
+    margin-right: 1.5em;
 }
 /*end nav stuff*/
 /*end profileLayout*/
 /*start profile dash*/
 /*Greeting text*/
- #dash-greeting-wrapper{
-     font-family: 'Raleway', sans-serif;
-     width: 100%;
-     height: 14em;
-     position: relative;
-     left: 0;
-     top: 0;
-     text-align: center;
+#dash-greeting-wrapper{
+    font-family: 'Raleway', sans-serif;
+    width: 100%;
+    height: 14em;
+    position: relative;
+    left: 0;
+    top: 0;
+    text-align: center;
 }
- #dash-hello-greeting{
-     font-weight: bolder;
-     font-size: 3.5em;
+#dash-hello-greeting{
+    font-weight: bolder;
+    font-size: 3.5em;
 }
- #dash-greeting{
-     font-size: 1.2em;
-     margin: .5em;
+#dash-greeting{
+    font-size: 1.2em;
+    margin: .5em;
 }
 /*data text*/
- #dash-worth-wrapper{
-     position: relative;
-     top: 0em;
-     text-align: center;
-     font-family: 'Raleway', sans-serif;
-     font-size: 2.5em;
-     width: 100%;
+#dash-worth-wrapper{
+    position: relative;
+    top: 0em;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 2.5em;
+    width: 100%;
 }
- #dash-worth-wrapper p{
-     display: inline-block;
-     font-weight: bold;
+#dash-worth-wrapper p{
+    display: inline-block;
+    font-weight: bold;
 }
- #user-worth{
-     font-family: 'PT Sans', sans-serif;
+#user-worth{
+    font-family: 'PT Sans', sans-serif;
 }
 /*data charts*/
- #data-charts-wrapper{
-    width: 100%;
-    position: relative;
-    height: 40vw;
-    margin-bottom: 2em;
+#data-charts-wrapper{
+   width: 100%;
+   position: relative;
+   height: 40vw;
+   margin-bottom: 2em;
 }
- #dash-doughnut{
-     width: 34vw!important;
-     height: 33vw!important;
-     position: absolute;
-     margin-top: 5em;
-     left: 4em;
+#dash-doughnut{
+    width: 34vw!important;
+    height: 33vw!important;
+    position: absolute;
+    margin-top: 5em;
+    left: 4em;
 }
- #dash-line{
-     position: absolute;
-     right: 2.5vw;
-     width: 50vw!important;
-     height: 34vw!important;
-     margin-top: 3em;
+#dash-line{
+    position: absolute;
+    right: 2.5vw;
+    width: 50vw!important;
+    height: 34vw!important;
+    margin-top: 3em;
 }
 /*settings stuff*/
 .settings-items-wrappers{
-	display: none;
+   display: none;
 }
 .active-settings-item{
-	display: block !important; 
+   display: block !important; 
 }
 #settings-nav{
-     height: 4em;
-     background-color: #272727;
-     text-align: center;
+    height: 4em;
+    background-color: #272727;
+    text-align: center;
 }
 }
- #settings-nav-items{
-     margin:0;
-     padding:0;
-     height: 100%;
-     text-align: center;
-     position: relative;
+#settings-nav-items{
+    margin:0;
+    padding:0;
+    height: 100%;
+    text-align: center;
+    position: relative;
 }
- .settings-nav-li{
-     font-size: 1.5em;
-     color: snow;
-     cursor: pointer;
-     margin: .5em 2em;
-     width: unset!important;
+.settings-nav-li{
+    font-size: 1.5em;
+    color: snow;
+    cursor: pointer;
+    margin: .5em 2em;
+    width: unset!important;
 }
- .settings-nav-li:hover:not(.selected-settings-nav){
-     color:grey;
+.settings-nav-li:hover:not(.selected-settings-nav){
+    color:grey;
 }
- .selected-settings-nav{
-     border-bottom: 2px solid snow;
-     padding-bottom: 3px;
-     margin: 0em 1.5em;
+.selected-settings-nav{
+    border-bottom: 2px solid snow;
+    padding-bottom: 3px;
+    margin: 0em 1.5em;
 }
- #settings-profile-btn{
+#settings-profile-btn{
 }
- #settings-pass-btn{
+#settings-pass-btn{
 }
- #settings-wallet-btn{
+#settings-wallet-btn{
 }
- #settings-notification-btn{
+#settings-notification-btn{
 }
- #settings-advanced-btn{
+#settings-advanced-btn{
 }
- .settings-items-wrappers{
-     width:100%;
-     height:100%;
-     background-color:transparent;
-     position:relative;
+.settings-items-wrappers{
+    width:100%;
+    height:100%;
+    background-color:transparent;
+    position:relative;
 }
- #profile-settings-wrapper{
-     display: none;
+#profile-settings-wrapper{
+    display: none;
 }
 /*wallet page stuff*/
- #add-wallet-wrapper{
+#add-wallet-wrapper{
 }
- .add-wallet-label{
-     font-size:4em;
-     font-weight: inherit;
-     width: 100%;
-     text-align: center;
-     font-weight: 200;
-     margin-top: 1.5em;
-}
- .wallet-form-wrapper{
-     width: 50vw;
-     height: 13vw;
-     position: relative;
-     left: 25vw;
-}
- .wallet-input{
-     color:grey;
-     height:1em!important;
-     font-size: 2em!important;
-}
- .settings-submit{
-     font-size: 1.2em;
-     font-weight: 400;
-     height: 2em;
-     width: 20vw;
-     position: relative;
-     float: right;
-     display: inline-block;
-     margin-top: 0.5em;
-     background-color: #675e5e!important;
-}
- .dropdown-wrapper{
-     position: relative;
-     display: inline-block;
-}
- .dropdown-item{
-     display: block;
-     text-align: center;
-     font-size: 1.2em;
-     padding: 0.5em;
-     font-weight: 300;
-}
- #wallet-dropdown-btn{
-     width:13vw;
-     font-size: 1.2em;
-     background-color: #675e5e!important;
-}
- #selectedWalletDropdown:before{
-     content: "✓ ";
-}
- .user-wallets-label{
-     font-size:4em;
-     font-weight: 200;
-     width: 100%;
-     text-align: center;
-     margin-top: 1.5em;
-}
- #displayed-wallets-wrapper{
+.add-wallet-label{
+    font-size:4em;
+    font-weight: inherit;
+    width: 100%;
     text-align: center;
-    width: 56vw;
-    position: relative;
-    left: 22vw;
-}
- .wallet-address-item{
+    font-weight: 200;
     margin-top: 1.5em;
 }
- .wallet-address-delete-btn{
-     margin-left: 16vw;
+.wallet-form-wrapper{
+    width: 50vw;
+    height: 13vw;
+    position: relative;
+    left: 25vw;
+}
+.wallet-input{
+    color:grey;
+    height:1em!important;
+    font-size: 2em!important;
+}
+.settings-submit{
+    font-size: 1.2em;
+    font-weight: 400;
+    height: 2em;
+    width: 20vw;
+    position: relative;
+    float: right;
+    display: inline-block;
+    margin-top: 0.5em;
+    background-color: #675e5e!important;
+}
+.dropdown-wrapper{
+    position: relative;
+    display: inline-block;
+}
+.dropdown-item{
+    display: block;
+    text-align: center;
+    font-size: 1.2em;
+    padding: 0.5em;
+    font-weight: 300;
+}
+#wallet-dropdown-btn{
+    width:13vw;
+    font-size: 1.2em;
+    background-color: #675e5e!important;
+}
+#selectedWalletDropdown:before{
+    content: "✓ ";
+}
+.user-wallets-label{
+    font-size:4em;
+    font-weight: 200;
+    width: 100%;
+    text-align: center;
+    margin-top: 1.5em;
+}
+#displayed-wallets-wrapper{
+   text-align: center;
+   width: 56vw;
+   position: relative;
+   left: 22vw;
+}
+.wallet-address-item{
+   margin-top: 1.5em;
+}
+.wallet-address-delete-btn{
+    margin-left: 16vw;
 }
 .list-group li{
-	width:100% !important;
+   width:100% !important;
 }
 /*end wallet page*/
 
@@ -243,74 +243,97 @@ li{
 
 }
 #nonverified-notifications-wrapper{
-    margin-top: 9em;
+   margin-top: 9em;
 }
 #verified-notifications-wrapper{
-	display: none;
+   display: none;
 }
 /*adding notification stuff*/
 
 .nonverified-notifications-head{
-	width:100%;
-	text-align: center;
-	margin-top: auto;
+   width:100%;
+   text-align: center;
+   margin-top: auto;
 }
 .nonverified-notifications-head h1{
-	font-size: 5.5em;
-	font-weight: 200;
+   font-size: 5.5em;
+   font-weight: 200;
 }
 .add-phone-form{
-	width: 50vw;
-	position: relative;
-	left: 25vw;
-	margin-top: 3em;
-	display: none;
+   width: 50vw;
+   position: relative;
+   left: 25vw;
+   margin-top: 3em;
+   display: none;
 }
 .send-code-form{
-	width: 50vw;
-	position: relative;
-	left: 25vw;
-	margin-top: 5em;
+   width: 50vw;
+   position: relative;
+   left: 25vw;
+   margin-top: 5em;
 }
 #add-phone-input{
-	text-align: center;
-	height: 100%;
-	font-size: 6em;
-	color:lightseagreen;
-	font-weight: 200;
-	margin-top: 1em;
+   text-align: center;
+   height: 100%;
+   font-size: 6em;
+   color:lightseagreen;
+   font-weight: 200;
+   margin-top: 1em;
 }
 .carrier-dropdown-item{
-	display: inline-block;
-	width: 13vw;
-	font-size: 1em;
+   display: inline-block;
+   width: 13vw;
+   font-size: 1em;
 }
 .carrier-type-dropdown{
-    width: 53vw;
+   width: 53vw;
 }
 #carrier-dropdown-btn{
-	 width: 21vw;
-	 font-size: 2em;
-	 margin-top: 0.5em;
-	 background-color: #4B515D!important;
+    width: 21vw;
+    font-size: 2em;
+    margin-top: 0.5em;
+    background-color: #4B515D!important;
 }
 #text-submit{
-	font-size: 2em;
-	background-color: #3E4551!important;
+   font-size: 2em;
+   background-color: #3E4551!important;
 }
 /*end adding phone stuff*/
 
 /*Saved notifications stuff*/
 .saved-alerts-wrapper{
-    text-align: center;
+   text-align: center;
 }
+.saved-alerts-head{
+   border-bottom: 1px solid grey;
+   display: inline-block;
+   width: 38vw;
+   padding-bottom: 0.5em;
+   font-size: 4em;
+   margin-top: 1em;
+   font-weight: 200;
+}
+.update-alert-link{
 
+}
+.delete-alert-link{
 
+}
+.saved-alerts-delete-btn{
+    
+}
+.saved-alerts-update-btn{
 
-
-
-
-
+}
+#saved-alerts-addbtn{
+    width: 16vw;
+    font-size: 1.4em;
+}
+#saved-alerts-list-wrapper{
+    width: 63vw;
+    display: inline-block;
+    margin-top: 1em;
+}
 
 
 
