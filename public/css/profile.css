@@ -363,25 +363,48 @@ li.nav-item.dropdown.open .dropdown-item{
 }
 #alert-type-search-results-wrapper{overflow: hidden;height: 15em;margin-top: 1em;position: absolute;width: 100%;}
 .alert-search-item{width: 100%;margin-bottom: 1em;text-align: left;font-size: 1.5em;cursor: pointer;}
-#alert-type-search{font-size: 2em;text-align: center;height: 2em;}
+#alert-type-search{font-size: 2em;text-align: center;height: 2em;color: #127b6f;}
 /*end search alert stuff*/
-
 /*alert stats stuff*/
-
 .alert-stats-wrapper{
     border-bottom: 1px solid #8080804a;
     padding-bottom: 2em;
+    display: none;
 }
-
 /*end alert stats stuff*/
 .alert-stat{
     display: inline-block;
     width: 40%;
+    color: #0f7875;
 }
 #alert-invested-stat{
     margin-top: 1em;
+    color: #30ad4d;
 }
 /*End create notification stuff*/
+/*Start notification slider stuff*/
+.alert-sliders-wrapper{margin-top: 4em;}
+#add-alert-btn{
 
+}
+.alert-slider-wrapper{text-align: center;height: 5em;}
+
+.alert-slider-wrapper label{left: 3em;font-size: 2em;color: #127a6e;font-weight: 300;}
+#alert-max-silder{}
+#alert-min-silder{
+    
+}
+.alert-cost-label:before{
+    content:"$";
+}
+.alert-cost-label{
+    display: inline-block;
+    width: 17em!important;
+}
+.alert-slider{
+    width: 40vw !important;
+    display: inline-block!important;
+}
+/*End notification slider stuff*/
 
 /*end notifications page*/

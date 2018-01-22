@@ -11,14 +11,28 @@
     </div>
     <!--Searchbox end-->
     <!--Search result data start -->
+        <!-- Stats -->
     <div class="alert-stats-wrapper">
         <h1 class="alert-stat" id="alert-value-stat"></h1>
         <h1 class="alert-stat" id="alert-owned-stat"></h1>
         <h1 id="alert-invested-stat"></h1>
     </div>
-
-
-
+        <!--Sliders-->
+    <div class="alert-sliders-wrapper">
+        <form class="range-field">
+            <div class="alert-slider-wrapper">
+                <label> Cost Above : </label>
+                <label class="alert-cost-label" id="alert-cost-max">1320.03</label>
+                <input oninput="modifyMaxSlider(this)" class="alert-slider" id="alert-max-silder" type="range" min="0" max="100" />
+            </div>
+            <div class="alert-slider-wrapper">
+                <label> Cost Below : </label>
+                <label class="alert-cost-label" id="alert-cost-min">892.32</label>
+                <input oninput="modifyMinSlider(this)" class="alert-slider" id="alert-min-silder" type="range" min="0" max="100" />
+            </div>
+            <input type="submit" id="add-alert-btn" value="Add Alert" class="btn btn-success">
+        </form>   
+    </div>
 
     <!--Search result data end-->
 </div>
@@ -55,6 +69,7 @@
             li.setAttribute("itemType",item.type);
             li.setAttribute("itemVal",item.val);
             li.innerText= item.name;
+            //search item click stuff
             li.addEventListener("click",function(){
                 if(document.getElementById("last-clicked-result")){
                     document.getElementById("last-clicked-result").removeAttribute("id");
@@ -63,11 +78,10 @@
                 document.getElementById("alert-type-search").value = this.innerHTML;
                 document.getElementsByClassName("alert-type-searchbox")[0].style.width="100%";
                 document.getElementById("alert-type-search-results-wrapper").style.display = "none";
-                document.getElementsByClassName("alert-stats-wrapper")[0].style.display="block";
                 if(item.type==="currency"){
                     document.getElementById("alert-owned-stat").style.display = "inline-block";
                     document.getElementById("alert-invested-stat").style.display = "block";
-                    document.getElementById("alert-invested-stat").innerText = "Total Invested : $"+(parseFloat(item.val)*parseFloat(item.owned)).toFixed(2);
+                    document.getElementById("alert-invested-stat").innerText = "Total Invested : $"+(parseFloat(item.val)*parseFloat(item.owned));
                     document.getElementById("alert-type-search").setAttribute("style","border-bottom:none !important;font-size:4em");
                     document.getElementById("alert-value-stat").innerText = "Cost : $" + item.val;
                     document.getElementById("alert-owned-stat").innerText = "Owned : " + item.owned;
@@ -77,7 +91,10 @@
                     document.getElementById("alert-value-stat").innerText = "Value :  " + item.val;
                     document.getElementById("alert-type-search").setAttribute("style","border-bottom:none !important;font-size:2em");
                 }
+                document.getElementsByClassName("alert-stats-wrapper")[0].style.display="block";
+                setSliderVals(item.val);
             });
+            //end search item click stuff
             document.getElementById("alert-search-ul").appendChild(li);
         });
     }
@@ -106,5 +123,26 @@
         document.getElementsByClassName("alert-stats-wrapper")[0].style.display="none";
         document.getElementsByClassName("alert-type-searchbox")[0].removeAttribute("style");
         searchChanged(e.value);
+    }
+    function modifyMaxSlider(e){
+        document.getElementById("alert-cost-max").innerText = e.value;
+    }
+    function modifyMinSlider(e){
+        document.getElementById("alert-cost-min").innerText = e.value;
+    }
+    function setSliderVals(cost){
+        //min slider
+        document.getElementById("alert-min-silder").setAttribute("min",cost/5);
+        document.getElementById("alert-min-silder").setAttribute("max",cost);
+        document.getElementById("alert-min-silder").setAttribute("step",cost/100);
+        //max slider
+        document.getElementById("alert-max-silder").setAttribute("min",cost);
+        document.getElementById("alert-max-silder").setAttribute("max",cost*5);
+        document.getElementById("alert-max-silder").setAttribute("step",cost/100);
+
+        document.getElementById("alert-max-silder").setAttribute("value",cost);
+        document.getElementById("alert-min-silder").setAttribute("value",cost);
+        document.getElementById("alert-cost-max").innerText = cost;
+        document.getElementById("alert-cost-min").innerText = cost;
     }
 </script>
