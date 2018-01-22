@@ -22,8 +22,9 @@ Displays data relating to crypto currencies. Alerts users about changes in crypt
 - [] Bitcoin based wallets are supported
 4. [✓] User is able to verify their phone number and recieve texts
 - [✓] User's carrier is saved in database for future use
-- [] User can recieve alerts based on preferences (ex. How often they 
-	should be alerted, and margin of change that triggers alert)
+- [] User can create alrerts based on the coins they own / wallets they have saved.
+- Note: This feature is 85% done, and can be viewed on the live site. Just doesn't add to db.
+- [] User can recieve alerts based on their saved alerts
 - [✓] Upon phone verification their profile in the database saves that they've verified their phone
 5. [] User can update profile information like first name / last name 
 6. [] User can change password
