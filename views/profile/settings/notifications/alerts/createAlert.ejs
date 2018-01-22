@@ -62,14 +62,15 @@
                 document.getElementById("alert-type-search").value = this.innerHTML;
                 document.getElementsByClassName("alert-type-searchbox")[0].style.width="100%";
                 document.getElementById("alert-type-search-results-wrapper").style.display = "none";
-                document.getElementById("alert-value-stat").innerText = "Cost : $" + item.val;
                 document.getElementsByClassName("alert-stats-wrapper")[0].style.display="block";
                 if(item.type==="currency"){
                     document.getElementById("alert-owned-stat").innerText = "Owned : " + item.owned;
                     document.getElementById("alert-owned-stat").style.display = "inline-block"
                     document.getElementById("alert-type-search").setAttribute("style","border-bottom:none !important;font-size:4em");
+                    document.getElementById("alert-value-stat").innerText = "Cost : $" + item.val;
                 }else{
                     document.getElementById("alert-owned-stat").style.display = "none"
+                    document.getElementById("alert-value-stat").innerText = "Value :  " + item.val;
                     document.getElementById("alert-type-search").setAttribute("style","border-bottom:none !important;font-size:2em");
                 }
             });
