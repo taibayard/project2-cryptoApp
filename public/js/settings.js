@@ -115,7 +115,17 @@ $("#code-submit").click(function(e) {
     } else {
         console.warn("Invalid code length");
     }
-
 });
-
-//handle submit/verify button
+$("#add-alert-btn").click(function(e){
+    e.preventDefault();
+    let max = $("#alert-max-silder").val();
+    let min = $("#alert-min-silder").val();
+    let name = $("#alert-type-search").val();
+    let alertData = max+"&"+min+"&"+name;
+    $.ajax({
+        url: "/profile/settings/addalert/" + alertData,
+        method: "POST"
+    }).then(function(data){
+        location.reload();
+    });
+});

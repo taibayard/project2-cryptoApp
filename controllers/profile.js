@@ -406,6 +406,11 @@ router.post("/settings/verifycode/:code",function(req,res){
     }
     res.send();
 });
+//post for adding the alert (notifications)
+router.post("/settings/addalert/:max&:min&:name",function(req,res){
+    let result = req.params.min +  " , " + req.params.max + " , " + req.params.name;
+    res.send(result);
+});
 /*DELETE ROUTES*/
 
 //deletes wallet from database
