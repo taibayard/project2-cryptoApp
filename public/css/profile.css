@@ -383,11 +383,9 @@ li.nav-item.dropdown.open .dropdown-item{
 }
 /*End create notification stuff*/
 /*Start notification slider stuff*/
-.alert-sliders-wrapper{margin-top: 4em;}
-#add-alert-btn{
-
-}
-.alert-slider-wrapper{text-align: center;height: 5em;}
+.alert-sliders-wrapper{margin-top: 6em;display: none;}
+#add-alert-btn{font-size: 1.5em;position: absolute;right: 4em;bottom: 2em;}
+.alert-slider-wrapper{text-align: center;height: 5em;margin-bottom: 4em;}
 
 .alert-slider-wrapper label{left: 3em;font-size: 2em;color: #127a6e;font-weight: 300;}
 #alert-max-silder{}

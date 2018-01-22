@@ -91,7 +91,9 @@
                     document.getElementById("alert-value-stat").innerText = "Value :  " + item.val;
                     document.getElementById("alert-type-search").setAttribute("style","border-bottom:none !important;font-size:2em");
                 }
+                
                 document.getElementsByClassName("alert-stats-wrapper")[0].style.display="block";
+                document.getElementsByClassName("alert-sliders-wrapper")[0].style.display="block";
                 setSliderVals(item.val);
             });
             //end search item click stuff
@@ -122,6 +124,7 @@
         e.removeAttribute("style");
         document.getElementsByClassName("alert-stats-wrapper")[0].style.display="none";
         document.getElementsByClassName("alert-type-searchbox")[0].removeAttribute("style");
+        document.getElementsByClassName("alert-sliders-wrapper")[0].style.display="none";
         searchChanged(e.value);
     }
     function modifyMaxSlider(e){
