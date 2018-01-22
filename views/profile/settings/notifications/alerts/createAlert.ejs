@@ -1,14 +1,25 @@
 <div class="create-alert-wrapper">
+    <!-- Searchbox start -->
     <div class="create-alert-type-wrapper">
-        <h1 class="alert-type-label">Type : </h1> 
         <div class="alert-type-searchbox">
-            <input id="alert-type-search" type="text" placeholder="Search by wallet or currency" onkeyup="searchChanged(this.value)">
+            <input id="alert-type-search" type="text" onclick="restSearch(this)" placeholder="Enter wallet or currency" onkeyup="searchChanged(this.value)">
             <div id="alert-type-search-results-wrapper">
                 <ul id="alert-search-ul">
                 </ul>
             </div>
         </div>
     </div>
+    <!--Searchbox end-->
+    <!--Search result data start -->
+    <div class="alert-stats-wrapper">
+        <h1 class="alert-stat" id="alert-value-stat"></h1>
+        <h1 class="alert-stat" id="alert-owned-stat"></h1>
+    </div>
+
+
+
+
+    <!--Search result data end-->
 </div>
 <script type="text/javascript">
     let walletObj = <%- JSON.stringify(wallet) %>
@@ -19,18 +30,23 @@
     }
     let coinData = {
         coinNames:[],
-        coinValues:[]
+        coinValues:[],
+        coinOwned:[]
     }
     walletObj.forEach((item) => {
         walletData.walletNames.push(item.address.toUpperCase());
-        walletData.walletValues.push(item.value);
+        walletData.walletValues.push("NOT SUPPORTED YET!"); //item.value
         item.coins.forEach((coins) => {
             coinData.coinNames.push(coins.name)
             coinData.coinValues.push(coins.value);
+            coinData.coinOwned.push(coins.owned);
         });
     });
     function addSearchItems(e){
-        document.getElementById("alert-search-ul").innerHTML = "";
+        if(document.getElementById("last-clicked-result")){
+            document.getElementById("last-clicked-result").removeAttribute("id");
+        }
+        document.getElementById("alert-type-search-results-wrapper").style.display = "block";
         let liEl = [];
         e.forEach((item)=>{
             let li = document.createElement("li");
@@ -38,22 +54,52 @@
             li.setAttribute("itemType",item.type);
             li.setAttribute("itemVal",item.val);
             li.innerText= item.name;
+            li.addEventListener("click",function(){
+                if(document.getElementById("last-clicked-result")){
+                    document.getElementById("last-clicked-result").removeAttribute("id");
+                }
+                this.setAttribute("id","last-clicked-result");
+                document.getElementById("alert-type-search").value = this.innerHTML;
+                document.getElementsByClassName("alert-type-searchbox")[0].style.width="100%";
+                document.getElementById("alert-type-search-results-wrapper").style.display = "none";
+                document.getElementById("alert-value-stat").innerText = "Cost : $" + item.val;
+                document.getElementsByClassName("alert-stats-wrapper")[0].style.display="block";
+                if(item.type==="currency"){
+                    document.getElementById("alert-owned-stat").innerText = "Owned : " + item.owned;
+                    document.getElementById("alert-owned-stat").style.display = "inline-block"
+                    document.getElementById("alert-type-search").setAttribute("style","border-bottom:none !important;font-size:4em");
+                }else{
+                    document.getElementById("alert-owned-stat").style.display = "none"
+                    document.getElementById("alert-type-search").setAttribute("style","border-bottom:none !important;font-size:2em");
+                }
+            });
             document.getElementById("alert-search-ul").appendChild(li);
         });
     }
     function searchChanged(query){
-        query=query.toUpperCase();
-        const searchResults = [];
-        coinData.coinNames.some(item =>{
-            if(item.indexOf(query)!==-1){
-                searchResults.push({name:item,val:coinData.coinValues[coinData.coinNames.indexOf(item)],type:"currency"});
-            }
-        });
-        walletData.walletNames.some(item =>{
-            if(item.indexOf(query)!==-1){
-                searchResults.push({name:item,val:coinData.coinValues[coinData.coinNames.indexOf(item)],type:"wallet"});
-            }
-        });
-        addSearchItems(searchResults);
+        document.getElementById("alert-search-ul").innerHTML = "";
+        if(query.length>0){
+            query=query.toUpperCase();
+            const searchResults = [];
+            coinData.coinNames.some(item =>{
+                if(item.indexOf(query)!==-1){
+                    searchResults.push({name:item,val:coinData.coinValues[coinData.coinNames.indexOf(item)],type:"currency",owned:coinData.coinOwned[coinData.coinNames.indexOf(item)]});
+                }
+            });
+            walletData.walletNames.some(item =>{
+                if(item.indexOf(query)!==-1){
+                    searchResults.push({name:item,val:walletData.walletValues[walletData.walletNames.indexOf(item)],type:"wallet"});
+                }
+            });
+            addSearchItems(searchResults);
+        }else{
+            document.getElementById("alert-type-search-results-wrapper").style.display = "none";
+        }
+    }
+    function restSearch(e){
+        e.removeAttribute("style");
+        document.getElementsByClassName("alert-stats-wrapper")[0].style.display="none";
+        document.getElementsByClassName("alert-type-searchbox")[0].removeAttribute("style");
+        searchChanged(e.value);
     }
 </script>
