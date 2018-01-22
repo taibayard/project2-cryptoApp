@@ -355,7 +355,7 @@ li.nav-item.dropdown.open .dropdown-item{
     display: block;
     position: relative;
     width: 100%;
-    margin-bottom: 7em;
+    margin-bottom: 4em;
     text-align: center;
 }
 #alert-search-ul{
@@ -369,8 +369,8 @@ li.nav-item.dropdown.open .dropdown-item{
 /*alert stats stuff*/
 
 .alert-stats-wrapper{
-    height: 9em;
     border-bottom: 1px solid #8080804a;
+    padding-bottom: 2em;
 }
 
 /*end alert stats stuff*/
@@ -378,7 +378,9 @@ li.nav-item.dropdown.open .dropdown-item{
     display: inline-block;
     width: 40%;
 }
-
+#alert-invested-stat{
+    margin-top: 1em;
+}
 /*End create notification stuff*/
 
 
