@@ -79,7 +79,7 @@ var coinmarket = {
         return new Promise(function(resolve, reject) {
             request.get(coinmarket.baseUrl, function(error, response, body) {
                 let parsedBody = JSON.parse(body);
-                if (parsedBody.length > 0) {
+                if (parsedBody) {
                     resolve(parsedBody);
                 } else {
                     resolve(error);
@@ -115,14 +115,14 @@ function updateCoinValues() {
     db.coin.findAll().then(function(coins) {
         //setting all coins values to data from coindata
         coins.forEach(function(coin) {
+            let c = coin;
             db.coindata.findOne({
                 where: {
                     symbol: coin.name
                 }
             }).then(function(matchedCoinData) {
-                console.log(matchedCoinData.value);
                 //found match in database
-                coin.updateAttributes({
+                c.updateAttributes({
                     value: matchedCoinData.value
                 })
             }).catch(function(err) {
