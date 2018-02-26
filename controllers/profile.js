@@ -114,6 +114,7 @@ function sendMessage(address, code) {
 }
 
 function updateCoinValues() {
+    /*Updates all users coins with most recent data from Coindata table*/
     db.coin.findAll().then(function (coins) {
         //setting all coins values to data from coindata
         coins.forEach(function (coin) {
@@ -136,6 +137,7 @@ function updateCoinValues() {
 }
 
 function initCoinData() {
+    /*Will get data from coinmarketcap and create it in db. This is used when there is no coindata in db */
     //Getting new Coin Data from API
     let coinmarketData = coinmarket.getCoins();
     coinmarketData.then(function (response) {
@@ -172,6 +174,8 @@ function updateCoinData() {
                 });
             });
         });
+        //Updating all users coin values now that there are new values from the API
+        updateCoinValues();
     }).catch(function (err) {
         console.log("error getting coin data from API");
     });
@@ -197,9 +201,10 @@ router.get('/dash', isLoggedIn, function (req, res) {
             db.coindata.findAll().then(function (coinsdata) {
                 if (coinsdata.length < 1) { // Handles no data in coindata db
                     /*coindata is empty (no data in db)*/
-                    //Creating first instance of coindata in db
-                    initCoinData();
-                } else { //Handles existing data in coinsdata db
+
+                    initCoinData(); //Creating first instance of coins in coindata db
+
+                } else { //Handles existing data in coindata db
                     /*Coindata table is NOT empty (it contains some coin values )*/
 
                     //Check to see if BTC ( used as an validator ) exists.
@@ -218,7 +223,8 @@ router.get('/dash', isLoggedIn, function (req, res) {
                         //difference between current time and date created
                         var updateTimer = currentMs - ms;
                         if (updateTimer >= coindataUpdateTimer) {
-                            //time to update data
+                            //time to update coindata table. 
+                            //after that all of the existing coins stored in wallets will be updated with the most recent values.
                             updateCoinData();
                         } else {
                             //not time to update data. Logging when next update will be pulled
@@ -245,7 +251,7 @@ router.get('/dash', isLoggedIn, function (req, res) {
                             walletId: wallet[0].dataValues.id
                         }
                     }).then(function (coins) {
-                        /*Found coins in wallet 0*/
+                        /*Found coins in wallet 0 */
                         //Rendering the user's dash
                         res.render('profile/dash', {
                             layout: profileView,
@@ -275,6 +281,7 @@ router.get('/dash', isLoggedIn, function (req, res) {
 //gets users settings data
 router.get("/settings", isLoggedIn, function (req, res) {
     userData = res.locals.currentUser.dataValues;
+    //Getting Wallets & Coins associated with user
     db.wallet.findAll({
         where: {
             userId: userData.id
@@ -290,7 +297,6 @@ router.get("/settings", isLoggedIn, function (req, res) {
             code: verificationCode
         })
     }).catch(function (err) {
-        //no wallets exist?
         res.send(err);
     })
 })
@@ -307,8 +313,8 @@ router.post("/settings/wallet", isLoggedIn, function (req, res) {
             type = "ethereum/token";
             //handle request to ethereum based walllet
             let walletRequest = ethplorer.getWallet(address);
-            //runs at end of promise (when request is done)
             walletRequest.then(function (walletData) {
+                /* Sucessfully Called ethplorer API */
                 if (!walletData.tokens) {
                     if (walletData.ETH.balance > 0) {
                         //do something with ether coins
@@ -317,11 +323,13 @@ router.post("/settings/wallet", isLoggedIn, function (req, res) {
                         res.send("No coins in wallet");
                     }
                 }
+                //Converting all token values from API response
                 for (let i = 0; i < walletData.tokens.length; i++) {
-                    walletData.tokens[i].balance = ethplorer.convertBalance(walletData.tokens[i].balance, walletData.tokens[i].tokenInfo.decimals)
+                    walletData.tokens[i].balance = ethplorer.convertBalance(walletData.tokens[i].balance, walletData.tokens[i].tokenInfo.decimals);
                 }
                 return walletData;
             }).then(function (result) {
+                /* API response values were converted*/
                 //time to create wallet and add coins
                 db.wallet.findOrCreate({
                     where: {
@@ -333,8 +341,11 @@ router.post("/settings/wallet", isLoggedIn, function (req, res) {
                     }
                 }).spread(function (wallet, wasCreated) {
                     if (wasCreated) {
-                        //was no duplicate add coins to database
-                        //add ETH if balance > 0 
+                        /*
+                            Was no duplicate wallet.
+                            Time to ADD coins to database
+                        */
+                        //add ETH to db if balance > 0 
                         if (result.ETH.balance > 0) {
                             db.coindata.findOne({
                                 where: {
@@ -349,7 +360,7 @@ router.post("/settings/wallet", isLoggedIn, function (req, res) {
                                 });
                             })
                         }
-                        //add tokens
+                        //add tokens to db
                         result.tokens.forEach(function (coin) {
                             //api handles erc20 token symbol differently than coinmarketcap.
                             if (coin.tokenInfo.symbol === "ERC") {
@@ -381,13 +392,12 @@ router.post("/settings/wallet", isLoggedIn, function (req, res) {
                             }
                         });
                     } else {
-                        //Contains duplicate ( fail )
-                        res.send("wallet already exists")
+                        //Contains duplicate wallet address ( fail )
+                        res.send("wallet already exists in db")
                     }
                 }).catch(function (err) {
                     res.send("Error adding wallet");
                 });
-
                 //going back to settings
                 res.redirect("/profile/dash");
             }).catch(function (err) {
