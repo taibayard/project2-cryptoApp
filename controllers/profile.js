@@ -314,7 +314,7 @@ router.post("/settings/wallet", isLoggedIn, function (req, res) {
             //handle request to ethereum based walllet
             let walletRequest = ethplorer.getWallet(address);
             walletRequest.then(function (walletData) {
-                /* Sucessfully Called ethplorer API */
+                /* Sucessfully Called ethplorer API  */
                 if (!walletData.tokens) {
                     if (walletData.ETH.balance > 0) {
                         //do something with ether coins
