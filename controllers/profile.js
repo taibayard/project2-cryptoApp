@@ -45,30 +45,30 @@ let ethplorer = {
         bal = bal.toString();
         if (bal.indexOf("e") != -1) {
             // handles numbers like 3.3e+37 or 2e+28
-            bal = bal.replace(".", "");
+            bal = bal.replace(".", "");//removes decimal from start. (ex. 3.3e+37 becomes 33e+37)
             let eOffset = bal.substring(bal.indexOf("+") + 1, bal.length);
             bal = bal.substring(0, bal.indexOf("e"));
-            eOffset = parseInt(eOffset) - 1; // -1 otherwise it will add one to many zeros 
-            while (eOffset > 0) {
-                bal += "0";
-                eOffset--;
+            eOffset = parseInt(eOffset);
+            let decimalLocation = (eOffset - dec) + 1; //where to put the new decimal
+            bal = bal.split("");
+            bal.splice(decimalLocation,0,".");
+            bal = bal.join("");
+        }else{
+            let offset = bal.length - dec;
+            if (offset > 0) {
+              // coin balance is greater than 0 with a decimal 
+              let temp = bal.split("");
+              temp.splice(offset, 0, ".");
+              bal = temp.join("");
+            } else {
+              //coin balance is less than 0 so it is a decimal
+              offset *= -1;
+              while (offset > 0) {
+                  bal = "0" + bal;
+                  offset--;
+              }
+              bal = "0." + bal;
             }
-            bal.replace(".", "");
-        }
-        let offset = bal.length - dec;
-        if (offset > 0) {
-            // coin balance is greater than 0 with a decimal 
-            let temp = bal.split("");
-            temp.splice(offset, 0, ".");
-            bal = temp.join("");
-        } else {
-            //coin balance is less than 0 so it is a decimal
-            offset *= -1;
-            while (offset > 0) {
-                bal = "0" + bal;
-                offset--;
-            }
-            bal = "0." + bal;
         }
         return parseFloat(bal);
     }
@@ -175,7 +175,7 @@ function updateCoinData() {
             });
         });
         //Updating all users coin values now that there are new values from the API
-        updateCoinValues();
+        //updateCoinValues();
     }).catch(function (err) {
         console.log("error getting coin data from API");
     });
@@ -314,7 +314,7 @@ router.post("/settings/wallet", isLoggedIn, function (req, res) {
             //handle request to ethereum based walllet
             let walletRequest = ethplorer.getWallet(address);
             walletRequest.then(function (walletData) {
-                /* Sucessfully Called ethplorer API  */
+                /* Sucessfully Called ethplorer API */
                 if (!walletData.tokens) {
                     if (walletData.ETH.balance > 0) {
                         //do something with ether coins
