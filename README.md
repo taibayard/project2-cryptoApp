@@ -22,7 +22,7 @@ Displays data relating to crypto currencies. Alerts users about changes in crypt
 - [] Bitcoin based wallets are supported
 4. [✓] User is able to verify their phone number and recieve texts
 - [✓] User's carrier is saved in database for future use
-- [] User can create alrerts based on the coins they own / wallets they have saved.
+- [] User can create alerts based on the coins they own / wallets they have saved.
 - Note: This feature is 85% done, and can be viewed on the live site. Just doesn't add to db.
 - [] User can recieve alerts based on their saved alerts
 - [✓] Upon phone verification their profile in the database saves that they've verified their phone
@@ -43,11 +43,11 @@ Displays data relating to crypto currencies. Alerts users about changes in crypt
 4. NodeJS
 5. EJS
 6. Express
-7. Boostrap /  MDBoostrap
+7. Boostrap / MDBoostrap
 8. HTML
 9. CSS
 # Note
- If you do not have a wallet address to test this app please use this one i pulled off of etherscan.io : 0x74389bca806df4276c0f1927fda45154e4556922 
+ If you do not have a wallet address to test this please use this one i pulled off of etherscan.io : 0x74389bca806df4276c0f1927fda45154e4556922 
  and select ETH or TOKEN as your wallet type.
 # Links
 <a href="https://cryptocurrencyalert.herokuapp.com" target="_blank">Live Site</a>|<a href="https://trello.com/b/4OQcMTO5/project-2" target="_blank">Trello</a>
