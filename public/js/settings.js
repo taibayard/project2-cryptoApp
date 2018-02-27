@@ -78,6 +78,31 @@ function selectedNavItem(e) {
 function addListeners(){
     $("#pass-settings-wrapper").on("submit",(e)=>{
         e.preventDefault();
+        let newpass = document.getElementsByClassName("new-pass-input")[0].value;
+        let confirm = document.getElementsByClassName("confirm-pass-input")[0].value;
+        let current = document.getElementsByClassName("current-pass-input")[0].value;
+        if (newpass === confirm) {
+            $.ajax({
+                url: "/profile/settings/changepass/" + newpass +"&"+current ,
+                method: "PUT"
+            }).then(function(data) {
+                data = data.toLowerCase();
+                if(data === "success"){
+                    location.reload();
+                }else{
+                    alert("Error \r\n" + data);
+                }
+            }).fail((err)=>{
+                if(err.responseText.indexOf("Cannot PUT") !==-1){
+                    alert("Error \r\n"+" password invalid")
+                }else{
+                    alert("Error \r\n" + err.responseText);
+                }
+            });
+        } else {
+            //make this a error modal !
+            alert("passwords do not match!");
+        }
     })
     $("#code-submit").click(function(e) {
         e.preventDefault();

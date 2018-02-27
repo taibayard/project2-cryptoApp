@@ -3,6 +3,7 @@ var express = require('express');
 var passport = require('../config/passportConfig');
 var db = require('../models');
 var nodemailer = require('nodemailer');
+var bcrypt = require('bcrypt');
 //middleware
 var isLoggedIn = require('../middleware/isLoggedIn');
 let carrier = null;
@@ -425,7 +426,6 @@ router.post("/settings/sendcode/:carrier", function (req, res) {
 });
 //post for verifying code (notifications)
 router.post("/settings/verifycode/:code", function (req, res) {
-    console.log(carrier);
     if (req.params.code === verificationCode) {
         //set phone is verified to true in database
         //sending confirmation message for now to verify everything works
@@ -486,5 +486,33 @@ router.delete("/settings/:address", function (req, res) {
         res.send("was error finding wallet in db");
     });
 });
-
+/*PUT ROUTES*/
+router.put("/settings/changepass/:newpass&:currentpass", function (req, res) {
+    let newpass = req.params.newpass;
+    let currentpass = req.params.currentpass;
+    if(newpass.length>8){
+        db.user.findOne({
+            where:{
+                id:userData.id
+            }
+        }).then((_user_)=>{
+            if(bcrypt.compareSync(currentpass, _user_.password)){
+                _user_.updateAttributes({
+                    password:bcrypt.hashSync(newpass, 10)
+                });
+                res.status(200);
+                res.send("Success");
+            }else{
+                res.status(400);
+                res.send("Invalid password");
+            }
+        }).catch((err)=>{
+            console.log("password change error : error finding user in database.")
+        })
+    }else{
+        res.status(400);
+        res.send("Password must be longer than 8 characters.");
+    }
+});
+//updating users password
 module.exports = router;
