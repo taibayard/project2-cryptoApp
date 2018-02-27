@@ -28,12 +28,15 @@ function selectedNavItem(e) {
         case "notifications":
             document.getElementById("notifications-settings-wrapper").classList.add("active-settings-item");
             break;
+        case "password":
+            document.getElementById("password-settings-wrapper").classList.add("active-settings-item");
         default:
+            /*Set previous page load here*/
             document.getElementById("profile-settings-wrapper").classList.add("active-settings-item");
             break;
     }
 }
-//IFFE
+//IIFE
 //event listeners for settings nav items
 (function() {
     let x = document.getElementsByClassName("settings-nav-li");
