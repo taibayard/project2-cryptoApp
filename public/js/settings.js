@@ -29,7 +29,8 @@ function selectedNavItem(e) {
             document.getElementById("notifications-settings-wrapper").classList.add("active-settings-item");
             break;
         case "password":
-            document.getElementById("password-settings-wrapper").classList.add("active-settings-item");
+            document.getElementById("pass-settings-wrapper").classList.add("active-settings-item");
+        break;
         default:
             /*Set previous page load here*/
             document.getElementById("profile-settings-wrapper").classList.add("active-settings-item");
@@ -57,21 +58,6 @@ function selectedNavItem(e) {
         })
     }
 })();
-//adding event listeners for wallete delete buttons
-(function() {
-    $(".wallet-address-delete-btn").click(function(e) {
-        e.preventDefault();
-        let address = this.parentElement.getElementsByTagName("a")[0].innerText;
-        console.log(address);
-        $.ajax({
-            url: "/profile/settings/" + address,
-            method: "DELETE"
-        }).then(function(data) {
-            window.location.href = "/profile/settings";
-        });
-    });
-})();
-
 /*Notifications functions*/
 //adds data to dropdown to carrier type & sets event listener for send code btn
 (function(){
@@ -87,7 +73,50 @@ function selectedNavItem(e) {
         a.setAttribute("extension",extension[i]);
         document.getElementsByClassName("carrier-type-dropdown")[0].appendChild(a);
     }
+})();
 
+function addListeners(){
+    $("#pass-settings-wrapper").on("submit",(e)=>{
+        e.preventDefault();
+    })
+    $("#code-submit").click(function(e) {
+        e.preventDefault();
+        let inputCode = document.getElementById("add-phone-input").value;
+        if (inputCode.length===4) {
+            $.ajax({
+                url: "/profile/settings/verifycode/" + inputCode,
+                method: "POST"
+            }).then(function(data) {
+                location.reload();
+            });
+        } else {
+            console.warn("Invalid code length");
+        }
+    });
+    $("#add-alert-btn").click(function(e){
+        e.preventDefault();
+        let max = $("#alert-max-silder").val();
+        let min = $("#alert-min-silder").val();
+        let name = $("#alert-type-search").val();
+        let alertData = max+"&"+min+"&"+name;
+        $.ajax({
+            url: "/profile/settings/addalert/" + alertData,
+            method: "POST"
+        }).then(function(data){
+            location.reload();
+        });
+    });
+    $(".wallet-address-delete-btn").click(function(e) {
+        e.preventDefault();
+        let address = this.parentElement.getElementsByTagName("a")[0].innerText;
+        console.log(address);
+        $.ajax({
+            url: "/profile/settings/" + address,
+            method: "DELETE"
+        }).then(function(data) {
+            window.location.href = "/profile/settings";
+        });
+    });
     $("#text-submit").click(function(e) {
         e.preventDefault();
         let address = document.getElementById("carrierTypeInput").value;
@@ -102,33 +131,7 @@ function selectedNavItem(e) {
         }else{
             console.warn("Unsupported option was selected");
         }
-
+    
     });
-})();
-$("#code-submit").click(function(e) {
-    e.preventDefault();
-    let inputCode = document.getElementById("add-phone-input").value;
-    if (inputCode.length===4) {
-        $.ajax({
-            url: "/profile/settings/verifycode/" + inputCode,
-            method: "POST"
-        }).then(function(data) {
-            location.reload();
-        });
-    } else {
-        console.warn("Invalid code length");
-    }
-});
-$("#add-alert-btn").click(function(e){
-    e.preventDefault();
-    let max = $("#alert-max-silder").val();
-    let min = $("#alert-min-silder").val();
-    let name = $("#alert-type-search").val();
-    let alertData = max+"&"+min+"&"+name;
-    $.ajax({
-        url: "/profile/settings/addalert/" + alertData,
-        method: "POST"
-    }).then(function(data){
-        location.reload();
-    });
-});
+}
+addListeners();

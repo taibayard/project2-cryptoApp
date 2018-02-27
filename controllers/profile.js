@@ -175,7 +175,7 @@ function updateCoinData() {
             });
         });
         //Updating all users coin values now that there are new values from the API
-        //updateCoinValues();
+        updateCoinValues();
     }).catch(function (err) {
         console.log("error getting coin data from API");
     });
@@ -486,4 +486,5 @@ router.delete("/settings/:address", function (req, res) {
         res.send("was error finding wallet in db");
     });
 });
+
 module.exports = router;
