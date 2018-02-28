@@ -17,20 +17,19 @@ function selectedNavItem(e) {
     document.getElementsByClassName("active-settings-item")[0].classList.remove("active-settings-item");
     //setting new ones
     e.classList.add("selected-settings-nav");
-    console.log(e.innerText);
     switch (e.innerText.toLowerCase()) {
         case "profile":
             document.getElementById("profile-settings-wrapper").classList.add("active-settings-item");
             break;
+        case "password":
+            document.getElementById("pass-settings-wrapper").classList.add("active-settings-item");
+        break;
         case "wallets":
             document.getElementById("add-wallet-wrapper").classList.add("active-settings-item");
             break;
         case "notifications":
             document.getElementById("notifications-settings-wrapper").classList.add("active-settings-item");
             break;
-        case "password":
-            document.getElementById("pass-settings-wrapper").classList.add("active-settings-item");
-        break;
         default:
             /*Set previous page load here*/
             document.getElementById("profile-settings-wrapper").classList.add("active-settings-item");
@@ -74,89 +73,3 @@ function selectedNavItem(e) {
         document.getElementsByClassName("carrier-type-dropdown")[0].appendChild(a);
     }
 })();
-
-function addListeners(){
-    $("#pass-settings-wrapper").on("submit",(e)=>{
-        e.preventDefault();
-        let newpass = document.getElementsByClassName("new-pass-input")[0].value;
-        let confirm = document.getElementsByClassName("confirm-pass-input")[0].value;
-        let current = document.getElementsByClassName("current-pass-input")[0].value;
-        if (newpass === confirm) {
-            $.ajax({
-                url: "/profile/settings/changepass/" + newpass +"&"+current ,
-                method: "PUT"
-            }).then(function(data) {
-                data = data.toLowerCase();
-                if(data === "success"){
-                    location.reload();
-                }else{
-                    alert("Error \r\n" + data);
-                }
-            }).fail((err)=>{
-                if(err.responseText.indexOf("Cannot PUT") !==-1){
-                    alert("Error \r\n"+" password invalid")
-                }else{
-                    alert("Error \r\n" + err.responseText);
-                }
-            });
-        } else {
-            //make this a error modal !
-            alert("passwords do not match!");
-        }
-    })
-    $("#code-submit").click(function(e) {
-        e.preventDefault();
-        let inputCode = document.getElementById("add-phone-input").value;
-        if (inputCode.length===4) {
-            $.ajax({
-                url: "/profile/settings/verifycode/" + inputCode,
-                method: "POST"
-            }).then(function(data) {
-                location.reload();
-            });
-        } else {
-            console.warn("Invalid code length");
-        }
-    });
-    $("#add-alert-btn").click(function(e){
-        e.preventDefault();
-        let max = $("#alert-max-silder").val();
-        let min = $("#alert-min-silder").val();
-        let name = $("#alert-type-search").val();
-        let alertData = max+"&"+min+"&"+name;
-        $.ajax({
-            url: "/profile/settings/addalert/" + alertData,
-            method: "POST"
-        }).then(function(data){
-            location.reload();
-        });
-    });
-    $(".wallet-address-delete-btn").click(function(e) {
-        e.preventDefault();
-        let address = this.parentElement.getElementsByTagName("a")[0].innerText;
-        console.log(address);
-        $.ajax({
-            url: "/profile/settings/" + address,
-            method: "DELETE"
-        }).then(function(data) {
-            window.location.href = "/profile/settings";
-        });
-    });
-    $("#text-submit").click(function(e) {
-        e.preventDefault();
-        let address = document.getElementById("carrierTypeInput").value;
-        if((address.indexOf("↵")&&address.indexOf("Not")&&address.indexOf("Discontinued") ) === -1){
-            $.ajax({
-                url: "/profile/settings/sendcode/" + address,
-                method: "POST"
-            }).then(function(data){
-               document.getElementsByClassName("send-code-form")[0].style.display = "none";
-                document.getElementsByClassName("add-phone-form")[0].style.display = "block";
-            });
-        }else{
-            console.warn("Unsupported option was selected");
-        }
-    
-    });
-}
-addListeners();
