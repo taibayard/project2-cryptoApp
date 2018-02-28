@@ -514,5 +514,6 @@ router.put("/settings/changepass/:newpass&:currentpass", function (req, res) {
         res.send("Password must be longer than 8 characters.");
     }
 });
+
 //updating users password
 module.exports = router;
