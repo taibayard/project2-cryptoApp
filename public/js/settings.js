@@ -73,3 +73,63 @@ function selectedNavItem(e) {
         document.getElementsByClassName("carrier-type-dropdown")[0].appendChild(a);
     }
 })();
+function addListeners(){
+    $("#pass-settings-wrapper").on("submit",(e)=>{
+        e.preventDefault();
+    })
+    $("#code-submit").click(function(e) {
+        e.preventDefault();
+        let inputCode = document.getElementById("add-phone-input").value;
+        if (inputCode.length===4) {
+            $.ajax({
+                url: "/profile/settings/verifycode/" + inputCode,
+                method: "POST"
+            }).then(function(data) {
+                location.reload();
+            });
+        } else {
+            console.warn("Invalid code length");
+        }
+    });
+    $("#add-alert-btn").click(function(e){
+        e.preventDefault();
+        let max = $("#alert-max-silder").val();
+        let min = $("#alert-min-silder").val();
+        let name = $("#alert-type-search").val();
+        let alertData = max+"&"+min+"&"+name;
+        $.ajax({
+            url: "/profile/settings/addalert/" + alertData,
+            method: "POST"
+        }).then(function(data){
+            location.reload();
+        });
+    });
+    $(".wallet-address-delete-btn").click(function(e) {
+        e.preventDefault();
+        let address = this.parentElement.getElementsByTagName("a")[0].innerText;
+        console.log(address);
+        $.ajax({
+            url: "/profile/settings/" + address,
+            method: "DELETE"
+        }).then(function(data) {
+            window.location.href = "/profile/settings";
+        });
+    });
+    $("#text-submit").click(function(e) {
+        e.preventDefault();
+        let address = document.getElementById("carrierTypeInput").value;
+        if((address.indexOf("↵")&&address.indexOf("Not")&&address.indexOf("Discontinued") ) === -1){
+            $.ajax({
+                url: "/profile/settings/sendcode/" + address,
+                method: "POST"
+            }).then(function(data){
+               document.getElementsByClassName("send-code-form")[0].style.display = "none";
+                document.getElementsByClassName("add-phone-form")[0].style.display = "block";
+            });
+        }else{
+            console.warn("Unsupported option was selected");
+        }
+    
+    });
+}
+addListeners();
