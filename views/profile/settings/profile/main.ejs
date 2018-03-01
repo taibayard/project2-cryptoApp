@@ -20,4 +20,23 @@
             </li>
         </ul>
     </div>
+    <div class="profile-savedinfo-wrapper">
+        <h1>Saved Wallets</h1>
+        <hr>
+		<% if(wallet.length > 0 ){%>
+			<ul class="list-group profile-saved-info-list">
+				<%wallet.forEach(function(item){%>
+					<li class="list-group-item wallet-address-item">
+						<a><%=item.address%></a>
+						<a class ="btn btn-danger delete-link wallet-address-delete-btn">
+							Delete
+						</a>
+					</li>
+				<%});%>
+			</ul>
+		<%} %>
+        <h1>Saved Text Alerts</h1>
+         <!-- TODO: ADD SAVED TEXT ALERTS -->
+        <hr>
+    </div>
 </div>

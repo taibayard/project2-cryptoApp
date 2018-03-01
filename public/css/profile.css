@@ -155,6 +155,7 @@ li.nav-item.dropdown.open .dropdown-item{
 }
 #profile-settings-wrapper{
     display: none;
+    text-align: center;
 }
 /*wallet page stuff*/
 #add-wallet-wrapper{
@@ -398,9 +399,9 @@ li.nav-item.dropdown.open .dropdown-item{
 
 /*End password page*/
 /*Start profile page*/
-.profile-update-wrapper{text-align: center;}
-.update-info-wrapper{width: 80%;display: inline-block;margin: 1em;padding: 0;}
-.update-info-item{position: relative;margin-bottom: 1em;}
+.profile-update-wrapper{text-align: center;background-color: #ffffff;}
+.update-info-wrapper,.profile-savedinfo-wrapper{width: 80%;display: inline-block;margin: 0;padding: 0;background-color: white;padding-bottom: 1em;}
+.update-info-item{position: relative;margin: 1em 1em;}
 .update-info-label{
     display: inline-block;
     position: relative;
@@ -416,5 +417,10 @@ li.nav-item.dropdown.open .dropdown-item{
     right: 4%;
     top: 33%;
     text-align: center;
+}
+.profile-savedinfo-wrapper{}
+.profile-saved-info-list{
+    width: 70%;
+    display: inline-block;
 }
 /*End profile page*/
