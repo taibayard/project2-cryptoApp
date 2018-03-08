@@ -1,5 +1,5 @@
 /*profile layout stuff*/
-#rendered-view{height: 100%;position: relative;width: 100%;}
+#rendered-view{height: 100%;position: relative;width: 100%;overflow: hidden;}
 /*nav stuff*/
 nav{
    border-radius: 0!important;
