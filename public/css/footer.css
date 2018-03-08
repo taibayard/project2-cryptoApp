@@ -2,7 +2,7 @@
 footer{
 	background-color: #665e5e;
 	overflow:auto;
-	position: relative;
+	position: absolute;
 	bottom:0;
 	left:0;
 	width:100%;
